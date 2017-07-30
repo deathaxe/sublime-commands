@@ -29,6 +29,17 @@
     { "caption": "Bookmarks: Clear All", "command": "clear_bookmarks" },
     { "caption": "Bookmarks: Select All", "command": "select_all_bookmarks" },
 
+    // Indentation
+    { "caption": "Indentation: Guess Settings From Buffer", "command": "detect_indentation"},
+    { "caption": "Indentation: Tab Width: 1", "command": "set_setting", "args": {"setting": "tab_size", "value": 1} },
+    { "caption": "Indentation: Tab Width: 2", "command": "set_setting", "args": {"setting": "tab_size", "value": 2} },
+    { "caption": "Indentation: Tab Width: 3", "command": "set_setting", "args": {"setting": "tab_size", "value": 3} },
+    { "caption": "Indentation: Tab Width: 4", "command": "set_setting", "args": {"setting": "tab_size", "value": 4} },
+    { "caption": "Indentation: Tab Width: 5", "command": "set_setting", "args": {"setting": "tab_size", "value": 5} },
+    { "caption": "Indentation: Tab Width: 6", "command": "set_setting", "args": {"setting": "tab_size", "value": 6} },
+    { "caption": "Indentation: Tab Width: 7", "command": "set_setting", "args": {"setting": "tab_size", "value": 7} },
+    { "caption": "Indentation: Tab Width: 8", "command": "set_setting", "args": {"setting": "tab_size", "value": 8} },
+    { "caption": "Indentation: Use Spaces", "command": "toggle_setting", "args": {"setting": "translate_tabs_to_spaces"} },
     { "caption": "Indentation: Convert to Tabs", "command": "unexpand_tabs", "args": {"set_translate_tabs": true} },
     { "caption": "Indentation: Convert to Spaces", "command": "expand_tabs", "args": {"set_translate_tabs": true} },
     { "caption": "Indentation: Reindent Lines", "command": "reindent", "args": {"single_line": false} },
