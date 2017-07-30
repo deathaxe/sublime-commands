@@ -1,25 +1,9 @@
 [
-    {
-        "caption": "Word Wrap: Toggle",
-        "command": "toggle_setting",
-        "args": {"setting": "word_wrap"}
-    },
-    {
-        "caption": "Convert Case: Upper Case",
-        "command": "upper_case"
-    },
-    {
-        "caption": "Convert Case: Lower Case",
-        "command": "lower_case"
-    },
-    {
-        "caption": "Convert Case: Title Case",
-        "command": "title_case"
-    },
-    {
-        "caption": "Convert Case: Swap Case",
-        "command": "swap_case"
-    },
+    { "caption": "Word Wrap: Toggle", "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+    { "caption": "Convert Case: Upper Case", "command": "upper_case" }, 
+    { "caption": "Convert Case: Lower Case", "command": "lower_case" },
+    { "caption": "Convert Case: Title Case", "command": "title_case" },
+    { "caption": "Convert Case: Swap Case", "command": "swap_case" },
 
     { "caption": "Toggle Comment", "command": "toggle_comment", "args": {"block": false} },
     { "caption": "Toggle Block Comment", "command": "toggle_comment", "args": {"block": true} },
@@ -47,10 +31,7 @@
     { "caption": "Project: Refresh Folders", "command": "refresh_folder_list" },
     { "caption": "Project: Edit Project",  "command": "open_file", "args": {"file": "${project}"} },
 
-    {
-        "caption": "Preferences: Settings",
-        "command": "edit_settings", "args":
-        {
+    { "caption": "Preferences: Settings", "command": "edit_settings", "args": {
             "base_file": "${packages}/Default/Preferences.sublime-settings",
             "default": "// Settings in here override those in \"Default/Preferences.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
         }
@@ -58,24 +39,14 @@
     { "caption": "Preferences: Settings – Syntax Specific", "command": "edit_syntax_settings" },
     { "caption": "Install Package Control", "command": "install_package_control" },
     { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} },
-
-    {
-        "caption": "Preferences: Key Bindings",
-        "command": "edit_settings", "args":
-        {
+    { "caption": "Preferences: Key Bindings", "command": "edit_settings", "args": {
             "base_file": "${packages}/Default/Default ($platform).sublime-keymap",
             "default": "[\n\t$0\n]\n"
         }
     },
 
-    {
-        "caption": "UI: Select Color Scheme",
-        "command": "select_color_scheme"
-    },
-    {
-        "caption": "UI: Select Theme",
-        "command": "select_theme"
-    },
+    { "caption": "UI: Select Color Scheme", "command": "select_color_scheme" },
+    { "caption": "UI: Select Theme", "command": "select_theme" },
 
     { "caption": "File: Save All", "command": "save_all" },
     { "caption": "File: Revert", "command": "revert" },
