@@ -54,6 +54,23 @@
     { "caption": "Mark: Clear Mark", "command": "clear_bookmarks", "args": {"name": "mark"} },
     { "caption": "Mark: Yank", "command": "yank" },
 
+    // Selection
+    { "caption": "Selection: Split into Lines", "command": "split_selection_into_lines" },
+    { "caption": "Selection: Add Previous Line", "command": "select_lines", "args": {"forward": "false"}},
+    { "caption": "Selection: Add Next Line", "command": "select_lines", "args": {"forward": "true"}},
+    { "caption": "Selection: Single Selection", "command": "single_selection" },
+    { "caption": "Selection: Invert Selection", "command": "invert_selection" },
+    { "caption": "Selection: Select All", "command": "select_all" },
+    { "caption": "Selection: Expand to Line", "command": "expand_selection", "args": {"to": "line"}},
+    { "caption": "Selection: Expand to Word", "command": "find_under_expand"},
+    { "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph"},
+    { "caption": "Selection: Expand to Scope", "command": "expand_selection", "args": {"to": "scope"}},
+    { "caption": "Selection: Expand to Brackets", "command": "expand_selection", "args": {"to": "brackets"}},
+    { "caption": "Selection: Expand to Indentation", "command": "expand_selection", "args": {"to": "indentation"}},
+    { "caption": "Selection: Expand to Tag", "command": "expand_selection", "args": {"to": "tag"}},
+    { "caption": "Selection: Undo Selection", "command": "soft_undo" },
+    { "caption": "Selection: Redo Selection", "command": "soft_redo" },
+
     // Indentation
     { "caption": "Indentation: Guess Settings From Buffer", "command": "detect_indentation"},
     { "caption": "Indentation: Tab Width: 1", "command": "set_setting", "args": {"setting": "tab_size", "value": 1} },
