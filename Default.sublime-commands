@@ -40,11 +40,18 @@
     { "caption": "View: Toggle Status Bar", "command": "toggle_status_bar" },
     { "caption": "View: Toggle Menu", "command": "toggle_menu" },
 
-    { "caption": "Project: Save As", "command": "save_project_and_workspace_as" },
-    { "caption": "Project: Close", "command": "close_workspace" },
-    { "caption": "Project: Add Folder", "command": "prompt_add_folder" },
-    { "caption": "Project: Refresh Folders", "command": "refresh_folder_list" },
+    // Project
+    { "caption": "Project: Open", "command": "prompt_open_project_or_workspace" },
+    { "caption": "Project: Switch", "command": "prompt_switch_project_or_workspace" },
+    { "caption": "Project: Quick Switch Project…", "command": "prompt_select_workspace" },
+    { "caption": "Project: Save As…", "command": "save_project_and_workspace_as" },
     { "caption": "Project: Edit Project",  "command": "open_file", "args": {"file": "${project}"} },
+    { "caption": "Project: Close", "command": "close_workspace" },
+    { "caption": "Project: New Workspace for Project", "command": "new_window_for_project" },
+    { "caption": "Project: Save Workspace As…", "command": "save_workspace_as" },
+    { "caption": "Project: Add Folder", "command": "prompt_add_folder" },
+    { "caption": "Project: Remove all Folders from Project", "command": "close_folder_list" },
+    { "caption": "Project: Refresh Folders", "command": "refresh_folder_list" },
 
     // Preferences 
     { "caption": "Install Package Control", "command": "install_package_control" },
