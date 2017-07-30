@@ -328,7 +328,9 @@
     { "caption": "Plugin Development: Profile Events", "command": "profile_plugins" },
     { "caption": "Plugin Development: Convert Syntax to .sublime-syntax", "command": "convert_syntax" },
 
+    // Help
     { "caption": "About", "command": "show_about_window" },
     { "caption": "Changelog", "command": "show_changelog" },
+    { "caption": "Check for Updates", "command": "update_check" },
     { "caption": "Indexing Status", "command": "show_progress_window" },
 ]
