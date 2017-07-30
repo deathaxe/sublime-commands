@@ -120,18 +120,12 @@
     { "caption": "Indentation: Reindent Lines", "command": "reindent", "args": {"single_line": false} },
 
     // View
-    { "caption": "View: Show Console", "command": "show_panel", "args": {"panel": "console"} },
-    { "caption": "View: Toggle Full Screen", "command": "toggle_full_screen"},
-    { "caption": "View: Toggle Distraction Free Mode", "command": "toggle_distraction_free" },
-    { "caption": "View: Toggle Side Bar", "command": "toggle_side_bar" },
-    { "caption": "View: Toggle Open Files in Side Bar", "command": "toggle_show_open_files" },
-    { "caption": "View: Toggle Minimap", "command": "toggle_minimap" },
-    { "caption": "View: Toggle Tabs", "command": "toggle_tabs" },
-    { "caption": "View: Toggle Status Bar", "command": "toggle_status_bar" },
-    { "caption": "View: Toggle Menu", "command": "toggle_menu" },
     { "caption": "View: Toggle Gutter", "command": "toggle_setting", "args": {"setting": "gutter"} },
     { "caption": "View: Toggle Line Numbers", "command": "toggle_setting", "args": {"setting": "line_numbers"} },
     { "caption": "View: Reveal Current File in Side Bar", "command": "reveal_in_side_bar" },
+    { "caption": "View: Increase Font Size", "command": "increase_font_size" },
+    { "caption": "View: Decrease Font Size", "command": "decrease_font_size" },
+    { "caption": "View: Reset Font Size", "command": "reset_font_size" },
 
     // View Layouts
     {
@@ -310,11 +304,19 @@
             "default": "[\n\t$0\n]\n"
         }
     },
+
+    // UI Preferences
     { "caption": "UI: Select Color Scheme", "command": "select_color_scheme" },
     { "caption": "UI: Select Theme", "command": "select_theme" },
-    { "caption": "UI: Increase Font Size", "command": "increase_font_size" },
-    { "caption": "UI: Decrease Font Size", "command": "decrease_font_size" },
-    { "caption": "UI: Reset Font Size", "command": "reset_font_size" },
+    { "caption": "UI: Show Console", "command": "show_panel", "args": {"panel": "console"} },
+    { "caption": "UI: Toggle Full Screen", "command": "toggle_full_screen"},
+    { "caption": "UI: Toggle Distraction Free Mode", "command": "toggle_distraction_free" },
+    { "caption": "UI: Toggle Side Bar", "command": "toggle_side_bar" },
+    { "caption": "UI: Toggle Open Files in Side Bar", "command": "toggle_show_open_files" },
+    { "caption": "UI: Toggle Minimap", "command": "toggle_minimap" },
+    { "caption": "UI: Toggle Tabs", "command": "toggle_tabs" },
+    { "caption": "UI: Toggle Status Bar", "command": "toggle_status_bar" },
+    { "caption": "UI: Toggle Menu", "command": "toggle_menu" },
 
     { "caption": "HTML: Wrap Selection With Tag", "command": "insert_snippet", "args": { "name": "Packages/XML/Snippets/long-tag.sublime-snippet" } },
     { "caption": "HTML: Encode Special Characters", "command": "encode_html_entities" },
