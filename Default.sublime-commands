@@ -325,6 +325,17 @@
     { "caption": "Permute Selections: Unique", "command": "permute_selection", "args": {"operation": "unique"} },
     { "caption": "Permute Selections: Shuffle", "command": "permute_selection", "args": {"operation": "shuffle"} },
 
+    // Tools
+    { "caption": "Build: Run Build", "command": "build", "args": {"variant": "Run"} },
+    { "caption": "Build: Show Results", "command": "show_panel", "args": {"panel": "output.exec"} },
+    { "caption": "Macro: Record Macro", "command": "toggle_record_macro" },
+    { "caption": "Macro: Playback Macro", "command": "run_macro" },
+    { "caption": "Macro: Save Macro…", "command": "save_macro" },
+    { "caption": "New Plugin…", "command": "new_plugin" },
+    { "caption": "New Snippet…", "command": "new_snippet" },
+    { "caption": "New Syntax…", "command": "new_syntax" },
+    
+    // Tools Developement
     { "caption": "Plugin Development: Profile Events", "command": "profile_plugins" },
     { "caption": "Plugin Development: Convert Syntax to .sublime-syntax", "command": "convert_syntax" },
 
