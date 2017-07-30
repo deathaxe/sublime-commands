@@ -238,6 +238,16 @@
     { "caption": "Group: Move to Group 7", "command": "move_to_group", "args": {"group": 6}},
     { "caption": "Group: Move to Group 8", "command": "move_to_group", "args": {"group": 7}},
 
+    // View Line Endings
+    { "caption": "Line Endings: Windows", "command": "set_line_ending", "args": {"type": "windows"} },
+    { "caption": "Line Endings: Unix", "command": "set_line_ending", "args": {"type": "unix"} },
+    { "caption": "Line Endings: Mac OS 9", "command": "set_line_ending", "args": {"type": "cr"} },
+
+    // View Spell Check
+    { "caption": "Spelling: Spell Check", "command": "toggle_setting", "args": {"setting": "spell_check"} },
+    { "caption": "Spelling: Next Misspelling", "command": "next_misspelling" },
+    { "caption": "Spelling: Previous Misspelling", "command": "prev_misspelling" },
+
     // Find
     { "caption": "Find…", "command": "show_panel", "args": {"panel": "find", "reverse": false} },
     { "caption": "Find Next", "command": "find_next" },
