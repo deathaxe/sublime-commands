@@ -23,11 +23,36 @@
     { "caption": "Toggle Comment", "command": "toggle_comment", "args": {"block": false} },
     { "caption": "Toggle Block Comment", "command": "toggle_comment", "args": {"block": true} },
 
+    // Bookmarks
     { "caption": "Bookmarks: Toggle", "command": "toggle_bookmark" },
     { "caption": "Bookmarks: Select Next", "command": "next_bookmark" },
     { "caption": "Bookmarks: Select Previous", "command": "prev_bookmark" },
     { "caption": "Bookmarks: Clear All", "command": "clear_bookmarks" },
     { "caption": "Bookmarks: Select All", "command": "select_all_bookmarks" },
+    { "caption": "Bookmarks: Select 0", "command": "select_bookmark", "args": {"index": 0} },
+    { "caption": "Bookmarks: Select 1", "command": "select_bookmark", "args": {"index": 1} },
+    { "caption": "Bookmarks: Select 2", "command": "select_bookmark", "args": {"index": 2} },
+    { "caption": "Bookmarks: Select 3", "command": "select_bookmark", "args": {"index": 3} },
+    { "caption": "Bookmarks: Select 4", "command": "select_bookmark", "args": {"index": 4} },
+    { "caption": "Bookmarks: Select 5", "command": "select_bookmark", "args": {"index": 5} },
+    { "caption": "Bookmarks: Select 6", "command": "select_bookmark", "args": {"index": 6} },
+    { "caption": "Bookmarks: Select 7", "command": "select_bookmark", "args": {"index": 7} },
+    { "caption": "Bookmarks: Select 8", "command": "select_bookmark", "args": {"index": 8} },
+    { "caption": "Bookmarks: Select 9", "command": "select_bookmark", "args": {"index": 9} },
+    { "caption": "Bookmarks: Select 10", "command": "select_bookmark", "args": {"index": 10} },
+    { "caption": "Bookmarks: Select 11", "command": "select_bookmark", "args": {"index": 11} },
+    { "caption": "Bookmarks: Select 12", "command": "select_bookmark", "args": {"index": 12} },
+    { "caption": "Bookmarks: Select 13", "command": "select_bookmark", "args": {"index": 13} },
+    { "caption": "Bookmarks: Select 14", "command": "select_bookmark", "args": {"index": 14} },
+    { "caption": "Bookmarks: Select 15", "command": "select_bookmark", "args": {"index": 15} },
+
+    // Marks
+    { "caption": "Mark: Set Mark", "command": "set_mark" },
+    { "caption": "Mark: Select to Mark", "command": "select_to_mark" },
+    { "caption": "Mark: Delete to Mark", "command": "delete_to_mark" },
+    { "caption": "Mark: Swap with Mark", "command": "swap_with_mark" },
+    { "caption": "Mark: Clear Mark", "command": "clear_bookmarks", "args": {"name": "mark"} },
+    { "caption": "Mark: Yank", "command": "yank" },
 
     // Indentation
     { "caption": "Indentation: Guess Settings From Buffer", "command": "detect_indentation"},
