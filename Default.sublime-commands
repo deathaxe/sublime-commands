@@ -188,6 +188,21 @@
     { "caption": "Group: Move to Group 7", "command": "move_to_group", "args": {"group": 6}},
     { "caption": "Group: Move to Group 8", "command": "move_to_group", "args": {"group": 7}},
 
+    // Goto
+    { "caption": "Goto: Anything…", "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+    { "caption": "Goto: Symbol…", "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+    { "caption": "Goto: Symbol in Project…", "command": "goto_symbol_in_project" },
+    { "caption": "Goto: Definition…", "command": "goto_definition" },
+    { "caption": "Goto: Line…", "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+    { "caption": "Goto: Jump Back", "command": "jump_back" },
+    { "caption": "Goto: Jump Forward", "command": "jump_forward" },
+    { "caption": "Goto: Selection", "command": "show_at_center" },
+    { "caption": "Goto: Matching Bracket", "command": "move_to", "args": {"to": "brackets"} },
+    { "caption": "Switch: Next File", "command": "next_view" },
+    { "caption": "Switch: Previous File", "command": "prev_view" },
+    { "caption": "Switch: Next File in Stack", "command": "next_view_in_stack" },
+    { "caption": "Switch: Previous File in Stack", "command": "prev_view_in_stack" },
+
     // Project
     { "caption": "Project: Open", "command": "prompt_open_project_or_workspace" },
     { "caption": "Project: Switch", "command": "prompt_switch_project_or_workspace" },
