@@ -123,6 +123,35 @@
         }
     },
 
+    // View Groups
+    { "caption": "Group: Move to New Group", "command": "new_pane"},
+    { "caption": "Group: New Group", "command": "new_pane", "args": {"move": false}},
+    { "caption": "Group: Close Group", "command": "close_pane"},
+
+    // View Focus Group
+    { "caption": "Group: Focus Next Group", "command": "focus_neighboring_group"},
+    { "caption": "Group: Focus Previous Group", "command": "focus_neighboring_group", "args": {"forward": false}},
+    { "caption": "Group: Focus Group 1", "command": "focus_group", "args": {"group": 0}},
+    { "caption": "Group: Focus Group 2", "command": "focus_group", "args": {"group": 1}},
+    { "caption": "Group: Focus Group 3", "command": "focus_group", "args": {"group": 2}},
+    { "caption": "Group: Focus Group 4", "command": "focus_group", "args": {"group": 3}},
+    { "caption": "Group: Focus Group 5", "command": "focus_group", "args": {"group": 4}},
+    { "caption": "Group: Focus Group 6", "command": "focus_group", "args": {"group": 5}},
+    { "caption": "Group: Focus Group 7", "command": "focus_group", "args": {"group": 6}},
+    { "caption": "Group: Focus Group 8", "command": "focus_group", "args": {"group": 7}},
+
+    // View Move File To Group
+    { "caption": "Group: Move to Next Group", "command": "move_to_neighboring_group"},
+    { "caption": "Group: Move to Previous Group", "command": "move_to_neighboring_group", "args": {"forward": false}},
+    { "caption": "Group: Move to Group 1", "command": "move_to_group", "args": {"group": 0}},
+    { "caption": "Group: Move to Group 2", "command": "move_to_group", "args": {"group": 1}},
+    { "caption": "Group: Move to Group 3", "command": "move_to_group", "args": {"group": 2}},
+    { "caption": "Group: Move to Group 4", "command": "move_to_group", "args": {"group": 3}},
+    { "caption": "Group: Move to Group 5", "command": "move_to_group", "args": {"group": 4}},
+    { "caption": "Group: Move to Group 6", "command": "move_to_group", "args": {"group": 5}},
+    { "caption": "Group: Move to Group 7", "command": "move_to_group", "args": {"group": 6}},
+    { "caption": "Group: Move to Group 8", "command": "move_to_group", "args": {"group": 7}},
+
     // Project
     { "caption": "Project: Open", "command": "prompt_open_project_or_workspace" },
     { "caption": "Project: Switch", "command": "prompt_switch_project_or_workspace" },
