@@ -89,6 +89,21 @@
     { "caption": "Selection: Undo Selection", "command": "soft_undo" },
     { "caption": "Selection: Redo Selection", "command": "soft_redo" },
 
+    // Code Folding
+    { "caption": "Code Folding: Fold", "command": "fold" },
+    { "caption": "Code Folding: Fold All", "command": "fold_all" },
+    { "caption": "Code Folding: Unfold", "command": "unfold" },
+    { "caption": "Code Folding: Unfold All", "command": "unfold_all" },
+    { "caption": "Code Folding: Fold Tag Attributes", "command": "fold_tag_attributes" },
+    { "caption": "Code Folding: by Level 2", "command": "fold_by_level", "args": {"level": 2} },
+    { "caption": "Code Folding: by Level 3", "command": "fold_by_level", "args": {"level": 3} },
+    { "caption": "Code Folding: by Level 4", "command": "fold_by_level", "args": {"level": 4} },
+    { "caption": "Code Folding: by Level 5", "command": "fold_by_level", "args": {"level": 5} },
+    { "caption": "Code Folding: by Level 6", "command": "fold_by_level", "args": {"level": 6} },
+    { "caption": "Code Folding: by Level 7", "command": "fold_by_level", "args": {"level": 7} },
+    { "caption": "Code Folding: by Level 8", "command": "fold_by_level", "args": {"level": 8} },
+    { "caption": "Code Folding: by Level 9", "command": "fold_by_level", "args": {"level": 9} },
+
     // Indentation
     { "caption": "Indentation: Guess Settings From Buffer", "command": "detect_indentation"},
     { "caption": "Indentation: Tab Width: 1", "command": "set_setting", "args": {"setting": "tab_size", "value": 1} },
@@ -309,9 +324,6 @@
     { "caption": "Permute Selections: Reverse", "command": "permute_selection", "args": {"operation": "reverse"} },
     { "caption": "Permute Selections: Unique", "command": "permute_selection", "args": {"operation": "unique"} },
     { "caption": "Permute Selections: Shuffle", "command": "permute_selection", "args": {"operation": "shuffle"} },
-
-    { "caption": "Code Folding: Unfold All", "command": "unfold_all" },
-    { "caption": "Code Folding: Fold Tag Attributes", "command": "fold_tag_attributes" },
 
     { "caption": "Plugin Development: Profile Events", "command": "profile_plugins" },
     { "caption": "Plugin Development: Convert Syntax to .sublime-syntax", "command": "convert_syntax" },
