@@ -188,6 +188,21 @@
     { "caption": "Group: Move to Group 7", "command": "move_to_group", "args": {"group": 6}},
     { "caption": "Group: Move to Group 8", "command": "move_to_group", "args": {"group": 7}},
 
+    // Find
+    { "caption": "Find…", "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+    { "caption": "Find Next", "command": "find_next" },
+    { "caption": "Find Previous","command": "find_prev" },
+    { "caption": "Incremental Find", "command": "show_panel", "args": {"panel": "incremental_find", "reverse": false} },
+    { "caption": "Replace…", "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
+    { "caption": "Replace Next", "command": "replace_next" },
+    { "caption": "Quick Find", "command": "find_under" },
+    { "caption": "Quick Find All", "command": "find_all_under" },
+    { "caption": "Quick Add Next", "command": "find_under_expand" },
+    { "caption": "Quick Skip Next","command": "find_under_expand_skip", "platform": "!OSX" },
+    { "caption": "Use Selection for Find", "command": "slurp_find_string" },
+    { "caption": "Use Selection for Replace", "command": "slurp_replace_string" },
+    { "caption": "Find in Files…", "command": "show_panel", "args": {"panel": "find_in_files"} },
+
     // Goto
     { "caption": "Goto: Anything…", "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
     { "caption": "Goto: Symbol…", "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
