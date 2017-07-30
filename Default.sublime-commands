@@ -21,14 +21,14 @@
         "command": "swap_case"
     },
 
-    { "command": "toggle_comment", "args": {"block": false}, "caption": "Toggle Comment" },
-    { "command": "toggle_comment", "args": {"block": true}, "caption": "Toggle Block Comment" },
+    { "caption": "Toggle Comment", "command": "toggle_comment", "args": {"block": false} },
+    { "caption": "Toggle Block Comment", "command": "toggle_comment", "args": {"block": true} },
 
-    { "command": "toggle_bookmark", "caption": "Bookmarks: Toggle" },
-    { "command": "next_bookmark", "caption": "Bookmarks: Select Next" },
-    { "command": "prev_bookmark", "caption": "Bookmarks: Select Previous" },
-    { "command": "clear_bookmarks", "caption": "Bookmarks: Clear All" },
-    { "command": "select_all_bookmarks", "caption": "Bookmarks: Select All" },
+    { "caption": "Bookmarks: Toggle", "command": "toggle_bookmark" },
+    { "caption": "Bookmarks: Select Next", "command": "next_bookmark" },
+    { "caption": "Bookmarks: Select Previous", "command": "prev_bookmark" },
+    { "caption": "Bookmarks: Clear All", "command": "clear_bookmarks" },
+    { "caption": "Bookmarks: Select All", "command": "select_all_bookmarks" },
 
     { "caption": "Indentation: Convert to Tabs", "command": "unexpand_tabs", "args": {"set_translate_tabs": true} },
     { "caption": "Indentation: Convert to Spaces", "command": "expand_tabs", "args": {"set_translate_tabs": true} },
