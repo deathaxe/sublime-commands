@@ -31,22 +31,30 @@
     { "caption": "Project: Refresh Folders", "command": "refresh_folder_list" },
     { "caption": "Project: Edit Project",  "command": "open_file", "args": {"file": "${project}"} },
 
+    // Preferences 
+    { "caption": "Install Package Control", "command": "install_package_control" },
+    { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} },
     { "caption": "Preferences: Settings", "command": "edit_settings", "args": {
             "base_file": "${packages}/Default/Preferences.sublime-settings",
             "default": "// Settings in here override those in \"Default/Preferences.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
         }
     },
     { "caption": "Preferences: Settings – Syntax Specific", "command": "edit_syntax_settings" },
-    { "caption": "Install Package Control", "command": "install_package_control" },
-    { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} },
+    { "caption": "Preferences: Settings – Distraction Free", "command": "edit_settings", "args": {
+            "base_file": "${packages}/Default/Distraction Free.sublime-settings",
+            "default": "// Settings in here override those in \"Default/Distraction Free.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
+        }
+    },
     { "caption": "Preferences: Key Bindings", "command": "edit_settings", "args": {
             "base_file": "${packages}/Default/Default ($platform).sublime-keymap",
             "default": "[\n\t$0\n]\n"
         }
     },
-
     { "caption": "UI: Select Color Scheme", "command": "select_color_scheme" },
     { "caption": "UI: Select Theme", "command": "select_theme" },
+    { "caption": "UI: Increase Font Size", "command": "increase_font_size" },
+    { "caption": "UI: Decrease Font Size", "command": "decrease_font_size" },
+    { "caption": "UI: Reset Font Size", "command": "reset_font_size" },
 
     { "caption": "File: Save All", "command": "save_all" },
     { "caption": "File: Revert", "command": "revert" },
