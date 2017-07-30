@@ -1,4 +1,19 @@
 [
+    // File Menu
+    { "caption": "File: New File", "command": "new_file" },
+    { "caption": "File: Open File", "command": "prompt_open_file" },
+    { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
+    { "caption": "File: Save", "command": "save" },
+    { "caption": "File: Save As…", "command": "prompt_save_as" },
+    { "caption": "File: Save All", "command": "save_all" },
+    { "caption": "File: Revert", "command": "revert" },
+    { "caption": "File: Close", "command": "close" },
+    { "caption": "File: Close All", "command": "close_all" },
+    { "caption": "File: New View into File", "command": "clone_file" },
+    { "caption": "New Window", "command": "new_window" },
+    { "caption": "Close Window", "command": "close_window" },
+    { "caption": "Exit Sublime Text", "command": "exit" },
+
     { "caption": "Word Wrap: Toggle", "command": "toggle_setting", "args": {"setting": "word_wrap"} },
     { "caption": "Convert Case: Upper Case", "command": "upper_case" }, 
     { "caption": "Convert Case: Lower Case", "command": "lower_case" },
@@ -55,11 +70,6 @@
     { "caption": "UI: Increase Font Size", "command": "increase_font_size" },
     { "caption": "UI: Decrease Font Size", "command": "decrease_font_size" },
     { "caption": "UI: Reset Font Size", "command": "reset_font_size" },
-
-    { "caption": "File: Save All", "command": "save_all" },
-    { "caption": "File: Revert", "command": "revert" },
-    { "caption": "File: New View into File", "command": "clone_file" },
-    { "caption": "File: Close All", "command": "close_all" },
 
     { "caption": "HTML: Wrap Selection With Tag", "command": "insert_snippet", "args": { "name": "Packages/XML/Snippets/long-tag.sublime-snippet" } },
     { "caption": "HTML: Encode Special Characters", "command": "encode_html_entities" },
