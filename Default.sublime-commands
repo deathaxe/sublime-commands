@@ -4,6 +4,7 @@
 
     // File Menu -> Open
     { "caption": "File: Open File", "command": "prompt_open_file" },
+    { "caption": "File: Open Folder", "command": "prompt_open_folder" },
     { "caption": "File: New View into File", "command": "clone_file" },
     { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
     { "caption": "File: Reopen with Encoding - UTF-8", "command": "reopen", "args": {"encoding": "utf-8" } },
