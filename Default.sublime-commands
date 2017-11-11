@@ -1,20 +1,11 @@
 [
     // File Menu
     { "caption": "File: New File", "command": "new_file" },
-    { "caption": "File: Open File", "command": "prompt_open_file" },
-    { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
-    { "caption": "File: Save", "command": "save" },
-    { "caption": "File: Save As…", "command": "prompt_save_as" },
-    { "caption": "File: Save All", "command": "save_all" },
-    { "caption": "File: Revert", "command": "revert" },
-    { "caption": "File: Close", "command": "close" },
-    { "caption": "File: Close All", "command": "close_all" },
-    { "caption": "File: New View into File", "command": "clone_file" },
-    { "caption": "New Window", "command": "new_window" },
-    { "caption": "Close Window", "command": "close_window" },
-    { "caption": "Exit Sublime Text", "command": "exit" },
 
-    // Reopen with Encoding
+    // File Menu -> Open
+    { "caption": "File: Open File", "command": "prompt_open_file" },
+    { "caption": "File: New View into File", "command": "clone_file" },
+    { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
     { "caption": "File: Reopen with Encoding - UTF-8", "command": "reopen", "args": {"encoding": "utf-8" } },
     { "caption": "File: Reopen with Encoding - UTF-16 LE", "command": "reopen", "args": {"encoding": "utf-16 le" } },
     { "caption": "File: Reopen with Encoding - UTF-16 BE", "command": "reopen", "args": {"encoding": "utf-16 be" } },
@@ -45,9 +36,12 @@
     { "caption": "File: Reopen with Encoding - Romanian (ISO 8859-16)", "command": "reopen", "args": {"encoding": "Romanian (ISO 8859-16)" } },
     { "caption": "File: Reopen with Encoding - Turkish (Windows 1254)", "command": "reopen", "args": {"encoding": "Turkish (Windows 1254)" } },
     { "caption": "File: Reopen with Encoding - Turkish (ISO 8859-9)", "command": "reopen", "args": {"encoding": "Turkish (ISO 8859-9)" } },
-    { "caption": "File: Reopen with Encoding - Vietnamese (Windows 1258)", "command": "reopen", "args": {"encoding": "Vietnamese (Windows 1258)" } },    
+    { "caption": "File: Reopen with Encoding - Vietnamese (Windows 1258)", "command": "reopen", "args": {"encoding": "Vietnamese (Windows 1258)" } },
 
-    // Save with Encoding
+    // File Menu -> Save
+    { "caption": "File: Save", "command": "save" },
+    { "caption": "File: Save As…", "command": "prompt_save_as" },
+    { "caption": "File: Save All", "command": "save_all" },
     { "caption": "File: Save with Encoding - UTF-8", "command": "save", "args": {"encoding": "utf-8" } },
     { "caption": "File: Save with Encoding - UTF-8 with BOM", "command": "save", "args": {"encoding": "utf-8 with bom" } },
     { "caption": "File: Save with Encoding - UTF-16 LE", "command": "save", "args": {"encoding": "utf-16 le" } },
@@ -83,6 +77,16 @@
     { "caption": "File: Save with Encoding - Turkish (ISO 8859-9)", "command": "save", "args": {"encoding": "Turkish (ISO 8859-9)" } },
     { "caption": "File: Save with Encoding - Vietnamese (Windows 1258)", "command": "save", "args": {"encoding": "Vietnamese (Windows 1258)" } },
 
+    // File Menu -> Close/Revert
+    { "caption": "File: Revert", "command": "revert" },
+    { "caption": "File: Close", "command": "close" },
+    { "caption": "File: Close All", "command": "close_all" },
+
+    // File Menu -> Window
+    { "caption": "Window: New Window", "command": "new_window" },
+    { "caption": "Window: Close Window", "command": "close_window" },
+    { "caption": "Exit Sublime Text", "command": "exit" },
+
     // Edit
     { "caption": "Edit: Undo", "command": "undo" },
     { "caption": "Edit: Redo or Repeat", "command": "redo_or_repeat" },
@@ -101,7 +105,7 @@
     { "caption": "Edit: Delete to End", "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard EOL.sublime-macro"} },
     { "caption": "Edit: Delete to Beginning", "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard BOL.sublime-macro"} },
 
-    { "caption": "Convert Case: Upper Case", "command": "upper_case" }, 
+    { "caption": "Convert Case: Upper Case", "command": "upper_case" },
     { "caption": "Convert Case: Lower Case", "command": "lower_case" },
     { "caption": "Convert Case: Title Case", "command": "title_case" },
     { "caption": "Convert Case: Swap Case", "command": "swap_case" },
@@ -372,7 +376,7 @@
     { "caption": "Project: Remove all Folders from Project", "command": "close_folder_list" },
     { "caption": "Project: Refresh Folders", "command": "refresh_folder_list" },
 
-    // Preferences 
+    // Preferences
     { "caption": "Install Package Control", "command": "install_package_control" },
     { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} },
     { "caption": "Preferences: Settings", "command": "edit_settings", "args": {
@@ -433,7 +437,7 @@
     { "caption": "New Plugin…", "command": "new_plugin" },
     { "caption": "New Snippet…", "command": "new_snippet" },
     { "caption": "New Syntax…", "command": "new_syntax" },
-    
+
     // Tools Developement
     { "caption": "Plugin Development: Profile Events", "command": "profile_plugins" },
     { "caption": "Plugin Development: Convert Syntax to .sublime-syntax", "command": "convert_syntax" },
