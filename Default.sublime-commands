@@ -78,6 +78,7 @@
     { "caption": "File: Save with Encoding - Vietnamese (Windows 1258)", "command": "save", "args": {"encoding": "Vietnamese (Windows 1258)" } },
 
     // File Menu -> Close/Revert
+    { "caption": "File: Rename File", "command": "rename_file" },
     { "caption": "File: Revert", "command": "revert" },
     { "caption": "File: Close", "command": "close" },
     { "caption": "File: Close All", "command": "close_all" },
@@ -447,4 +448,9 @@
     { "caption": "Changelog", "command": "show_changelog" },
     { "caption": "Check for Updates", "command": "update_check" },
     { "caption": "Indexing Status", "command": "show_progress_window" },
+
+    // Command Pallet only
+    { "caption": "Arithmetic", "command": "arithmetic"},
+    { "caption": "View Package File", "command": "view_resource" },
+    { "caption": "Convert Color Scheme", "command": "convert_color_scheme" },
 ]
