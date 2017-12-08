@@ -452,6 +452,7 @@
 
     // Command Pallet only
     { "caption": "Arithmetic", "command": "arithmetic"},
+    { "caption": "Preferences", "command": "edit_package_settings" },
     { "caption": "View Package File", "command": "view_resource" },
     { "caption": "Convert Color Scheme", "command": "convert_color_scheme" },
 ]
