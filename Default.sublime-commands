@@ -293,6 +293,7 @@
     { "caption": "Goto: Symbol…", "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
     { "caption": "Goto: Symbol in Project…", "command": "goto_symbol_in_project" },
     { "caption": "Goto: Definition…", "command": "goto_definition" },
+    { "caption": "Goto: Reference…", "command": "goto_reference" },
     { "caption": "Goto: Line…", "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
     { "caption": "Goto: Jump Back", "command": "jump_back" },
     { "caption": "Goto: Jump Forward", "command": "jump_forward" },
