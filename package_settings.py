@@ -47,15 +47,18 @@ class EditPackageSettingsCommand(sublime_plugin.WindowCommand):
 
     def input(self, args):
         if "base_file" not in args:
+            if "user_file" in args:
+                del args["user_file"]
             return BaseFileInputHandler()
         return None
 
-    def run(self, base_file, user_file=None, default=None):
+    def run(self, base_file):
         self.window.run_command(
             "edit_settings", {
                 "base_file": base_file,
-                "user_file": user_file,
-                "default": default
+                'default': (
+                    '// These settings override Default settings '
+                    'for the package\n{\n\t$0\n}\n')
             })
 
 
