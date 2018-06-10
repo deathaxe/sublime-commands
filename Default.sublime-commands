@@ -93,7 +93,7 @@
     { "caption": "Selection: Invert Selection", "command": "invert_selection" },
     { "caption": "Selection: Select All", "command": "select_all" },
     { "caption": "Selection: Expand to Line", "command": "expand_selection", "args": {"to": "line"}},
-    { "caption": "Selection: Expand to Word", "command": "find_under_expand"},
+    { "caption": "Selection: Expand to Word", "command": "expand_selection", "args": {"to": "word"}},
     { "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph"},
     { "caption": "Selection: Expand to Scope", "command": "expand_selection", "args": {"to": "scope"}},
     { "caption": "Selection: Expand to Brackets", "command": "expand_selection", "args": {"to": "brackets"}},
