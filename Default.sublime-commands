@@ -395,4 +395,11 @@
     { "caption": "Preferences", "command": "edit_package_settings" },
     { "caption": "View Package File", "command": "view_resource" },
     { "caption": "Convert Color Scheme", "command": "convert_color_scheme" },
+
+    // Debugging
+    { "caption": "Plugin Development: Toggle Log Built Sytems", "command": "toggle_log_built_systems" },
+    { "caption": "Plugin Development: Toggle Log Commands", "command": "toggle_log_commands" },
+    { "caption": "Plugin Development: Toggle Log Input", "command": "toggle_log_input" },
+    { "caption": "Plugin Development: Toggle Log Indexing", "command": "toggle_log_indexing" },
+    { "caption": "Plugin Development: Toggle Log Result Regex", "command": "toggle_log_result_regex" },
 ]
