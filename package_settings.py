@@ -23,7 +23,8 @@ class BaseFileInputHandler(sublime_plugin.ListInputHandler):
 
         # create filter for syntax-specific settings
         syntaxes = set()
-        for f in sublime.find_resources('*.sublime-syntax'):
+        for f in sublime.find_resources('*.sublime-syntax') + \
+                 sublime.find_resources('*.tmLanguage'):
             name, _ = os.path.splitext(os.path.basename(f))
             syntaxes.add(name)
 
@@ -31,7 +32,7 @@ class BaseFileInputHandler(sublime_plugin.ListInputHandler):
         names = set()
         for f in sublime.find_resources('*.sublime-settings'):
             package, path, name, ext = SETTINGS_RE.match(f).groups()
-            if package is not 'User' and name not in names and name not in syntaxes:
+            if package != 'User' and name not in names and name not in syntaxes:
                 item = "".join((package, "/", path or "", name, ext))
                 items.append((item, PACKAGES + item))
                 names.add(name)
@@ -76,7 +77,8 @@ class SyntaxSettingsInputHandler(sublime_plugin.ListInputHandler):
     def list_items(self):
         items = set()
         selected = None
-        for f in sublime.find_resources('*.sublime-syntax'):
+        for f in sublime.find_resources('*.sublime-syntax') + \
+                 sublime.find_resources('*.tmLanguage'):
             name, _ = os.path.splitext(os.path.basename(f))
             if name == self.syntax:
                 item = (name + " (this view)", name)
