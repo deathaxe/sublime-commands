@@ -16,6 +16,7 @@
     { "caption": "File: Save All", "command": "save_all" },
     { "caption": "File: Save with Encoding", "command": "save_encoding"},
     { "caption": "File: Set Encoding", "command": "set_encoding"},
+    { "caption": "File: Set Line Endings", "command": "set_line_endings" },
 
     // File Menu -> Close/Revert
     { "caption": "File: Rename File", "command": "rename_file" },
@@ -264,11 +265,6 @@
     { "caption": "Group: Move to Group 7", "command": "move_to_group", "args": {"group": 6}},
     { "caption": "Group: Move to Group 8", "command": "move_to_group", "args": {"group": 7}},
 
-    // View Line Endings
-    { "caption": "Line Endings: Windows", "command": "set_line_ending", "args": {"type": "windows"} },
-    { "caption": "Line Endings: Unix", "command": "set_line_ending", "args": {"type": "unix"} },
-    { "caption": "Line Endings: Mac OS 9", "command": "set_line_ending", "args": {"type": "cr"} },
-
     // View Spell Check
     { "caption": "Spelling: Spell Check", "command": "toggle_setting", "args": {"setting": "spell_check"} },
     { "caption": "Spelling: Next Misspelling", "command": "next_misspelling" },
@@ -349,7 +345,7 @@
     { "caption": "UI: Toggle Minimap", "command": "toggle_minimap" },
     { "caption": "UI: Toggle Tabs", "command": "toggle_tabs" },
     { "caption": "UI: Toggle Status Bar", "command": "toggle_status_bar" },
-    { "caption": "UI: Toggle Menu", "command": "toggle_menu" },
+    { "caption": "UI: Toggle Menu", "command": "toggle_menubar" },
 
     { "caption": "HTML: Wrap Selection With Tag", "command": "insert_snippet", "args": { "name": "Packages/XML/Snippets/long-tag.sublime-snippet" } },
     { "caption": "HTML: Encode Special Characters", "command": "encode_html_entities" },
