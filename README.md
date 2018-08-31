@@ -6,6 +6,33 @@ Packages like [Missing Commands](https://github.com/fjl/Sublime-Missing-Palette-
 
 This package provides a merged and hopefully complete Default.sublime-commands which is intended to be placed into the _Default_ package.
 
+
+##### Warning and Disclaimer
+
+As this package partially overwrites the _Default.sublime-package_ package provided by Sublime Text out of the box, the original content will be completely hidden.
+
+If you encounter any issues don't therefore blame the core devs but first try to remove this package.
+
+The package author tries his best to keep up to date with the ongoing development but can't provide any warranty.
+
+
+##### Package Control
+
+As this package is and will never be added to the official [packagecontrol.io](https://packagecontrol.io/) for official reasons, you need to add the following settings to your _Package_control.sublime-settings_ if you want Package Control to keep this package up to date for you.
+
+```
+"repositories":
+[
+    "https://github.com/deathaxe/sublime-commands.git"
+],
+"package_name_map":
+{
+    "sublime-commands": "Default"
+}
+```
+
+##### Manual Setup
+
 If you want to use it to override ST's commands you'll need to clone this repo into Sublime Text's _Packages_ path as _Default_
 
 ##### OSX
