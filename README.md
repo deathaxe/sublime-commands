@@ -23,7 +23,7 @@ As this package is and will never be added to the official [packagecontrol.io](h
 ```
 "repositories":
 [
-    "https://github.com/deathaxe/sublime-commands.git"
+    "https://github.com/deathaxe/sublime-commands"
 ],
 "package_name_map":
 {
