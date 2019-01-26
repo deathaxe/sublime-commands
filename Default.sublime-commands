@@ -398,4 +398,10 @@
     { "caption": "Plugin Development: Toggle Log Input", "command": "toggle_log_input" },
     { "caption": "Plugin Development: Toggle Log Indexing", "command": "toggle_log_indexing" },
     { "caption": "Plugin Development: Toggle Log Result Regex", "command": "toggle_log_result_regex" },
+
+    // Sublime Merge Integration
+    { "caption": "Sublime Merge: Open Repository", "command": "sublime_merge_open_repo" },
+    { "caption": "Sublime Merge: File History", "command": "sublime_merge_file_history" },
+    { "caption": "Sublime Merge: Folder History", "command": "sublime_merge_folder_history" },
+    { "caption": "Sublime Merge: Blame File", "command": "sublime_merge_blame_file" },
 ]
