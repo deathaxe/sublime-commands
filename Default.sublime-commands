@@ -50,6 +50,7 @@
     { "caption": "Edit: Delete Line", "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
     { "caption": "Edit: Delete to End", "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard EOL.sublime-macro"} },
     { "caption": "Edit: Delete to Beginning", "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard BOL.sublime-macro"} },
+    { "caption": "Edit: Trim Trailing White Space", "command": "trim_trailing_white_space" },
 
     { "caption": "Convert Case: Upper Case", "command": "upper_case" },
     { "caption": "Convert Case: Lower Case", "command": "lower_case" },
