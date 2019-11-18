@@ -98,6 +98,7 @@
     { "caption": "Selection: Single Selection", "command": "single_selection" },
     { "caption": "Selection: Invert Selection", "command": "invert_selection" },
     { "caption": "Selection: Select All", "command": "select_all" },
+    { "caption": "Selection: Expand Smart", "command": "expand_selection", "args": {"to": "smart"}},
     { "caption": "Selection: Expand to Line", "command": "expand_selection", "args": {"to": "line"}},
     { "caption": "Selection: Expand to Word", "command": "expand_selection", "args": {"to": "word"}},
     { "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph"},
