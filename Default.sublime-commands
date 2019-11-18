@@ -11,9 +11,9 @@
     { "caption": "File: Reopen with Encoding", "command": "reopen_encoding"},
 
     // File Menu -> Save
-    { "caption": "File: Save", "command": "save" },
+    { "caption": "File: Save", "command": "save", "args": { "async": true } },
     { "caption": "File: Save As…", "command": "prompt_save_as" },
-    { "caption": "File: Save All", "command": "save_all" },
+    { "caption": "File: Save All", "command": "save_all", "args": { "async": true } },
     { "caption": "File: Save with Encoding", "command": "save_encoding"},
     { "caption": "File: Set Encoding", "command": "set_encoding"},
     { "caption": "File: Set Line Endings", "command": "set_line_endings" },

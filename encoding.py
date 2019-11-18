@@ -74,7 +74,7 @@ class SaveEncodingCommand(sublime_plugin.WindowCommand):
         return None
 
     def run(self, encoding):
-        self.window.run_command("save", {"encoding": encoding})
+        self.window.run_command("save", {"async": True, "encoding": encoding})
 
 
 class SetEncodingCommand(sublime_plugin.WindowCommand):
