@@ -32,6 +32,8 @@
     // Edit
     { "caption": "Edit: Undo", "command": "undo" },
     { "caption": "Edit: Redo or Repeat", "command": "redo_or_repeat" },
+    { "caption": "Edit: Revert Diff Hunk", "command": "revert_hunk" },
+    { "caption": "Edit: Revert Modification", "command": "revert_modification" },
     { "caption": "Edit: Copy", "command": "copy" },
     { "caption": "Edit: Cut", "command": "cut" },
     { "caption": "Edit: Paste", "command": "paste" },
