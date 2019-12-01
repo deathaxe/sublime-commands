@@ -262,16 +262,16 @@
     { "caption": "Group: Focus Group 8", "command": "focus_group", "args": {"group": 7}},
 
     // View Move File To Group
-    { "caption": "Group: Move to Next Group", "command": "move_to_neighboring_group"},
-    { "caption": "Group: Move to Previous Group", "command": "move_to_neighboring_group", "args": {"forward": false}},
-    { "caption": "Group: Move to Group 1", "command": "move_to_group", "args": {"group": 0}},
-    { "caption": "Group: Move to Group 2", "command": "move_to_group", "args": {"group": 1}},
-    { "caption": "Group: Move to Group 3", "command": "move_to_group", "args": {"group": 2}},
-    { "caption": "Group: Move to Group 4", "command": "move_to_group", "args": {"group": 3}},
-    { "caption": "Group: Move to Group 5", "command": "move_to_group", "args": {"group": 4}},
-    { "caption": "Group: Move to Group 6", "command": "move_to_group", "args": {"group": 5}},
-    { "caption": "Group: Move to Group 7", "command": "move_to_group", "args": {"group": 6}},
-    { "caption": "Group: Move to Group 8", "command": "move_to_group", "args": {"group": 7}},
+    { "caption": "Move View: To Next Group", "command": "move_to_neighboring_group"},
+    { "caption": "Move View: To Previous Group", "command": "move_to_neighboring_group", "args": {"forward": false}},
+    { "caption": "Move View: To Group 1", "command": "move_to_group", "args": {"group": 0}},
+    { "caption": "Move View: To Group 2", "command": "move_to_group", "args": {"group": 1}},
+    { "caption": "Move View: To Group 3", "command": "move_to_group", "args": {"group": 2}},
+    { "caption": "Move View: To Group 4", "command": "move_to_group", "args": {"group": 3}},
+    { "caption": "Move View: To Group 5", "command": "move_to_group", "args": {"group": 4}},
+    { "caption": "Move View: To Group 6", "command": "move_to_group", "args": {"group": 5}},
+    { "caption": "Move View: To Group 7", "command": "move_to_group", "args": {"group": 6}},
+    { "caption": "Move View: To Group 8", "command": "move_to_group", "args": {"group": 7}},
 
     // View Spell Check
     { "caption": "Spelling: Spell Check", "command": "toggle_setting", "args": {"setting": "spell_check"} },
