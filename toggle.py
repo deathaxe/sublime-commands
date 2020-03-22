@@ -24,6 +24,20 @@ class ToggleLogCommandsCommand(sublime_plugin.ApplicationCommand):
         sublime.status_message('log_commands -> %s' % str(self.flag))
 
 
+class ToggleLogControlTreeCommand(sublime_plugin.ApplicationCommand):
+
+    def __init__(self):
+        self.flag = False
+
+    def is_enabled(self):
+        return hasattr(sublime, 'log_control_tree')
+
+    def run(self):
+        self.flag = not self.flag
+        sublime.log_control_tree(self.flag)
+        sublime.status_message('log_control_tree -> %s' % str(self.flag))
+
+
 class ToggleLogInputCommand(sublime_plugin.ApplicationCommand):
 
     def __init__(self):
