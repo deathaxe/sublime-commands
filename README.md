@@ -20,7 +20,7 @@ The package author tries his best to keep up to date with the ongoing developmen
 
 As this package is and will never be added to the official [packagecontrol.io](https://packagecontrol.io/) for official reasons, you need to add the following settings to your _Package_control.sublime-settings_ if you want Package Control to keep this package up to date for you.
 
-```
+```json
 "repositories":
 [
     "https://github.com/deathaxe/sublime-commands"
@@ -37,7 +37,8 @@ If you want to use it to override ST's commands you'll need to clone this repo i
 
 ##### OSX
 
-```shell
+```sh
+#!/usr/bin/env bash
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 git clone https://github.com/deathaxe/sublime-commands "Default"
 ```
@@ -45,7 +46,7 @@ git clone https://github.com/deathaxe/sublime-commands "Default"
 
 ##### Linux
 
-```shell
+```sh
 cd ~/.config/sublime-text-3/Packages
 git clone https://github.com/deathaxe/sublime-commands "Default"
 ```
@@ -53,7 +54,7 @@ git clone https://github.com/deathaxe/sublime-commands "Default"
 
 ##### Windows
 
-```shell
+```sh
 cd "%APPDATA%\Sublime Text 3\Packages"
 git clone https://github.com/deathaxe/sublime-commands "Default"
 ```
