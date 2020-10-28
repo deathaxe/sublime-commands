@@ -31,7 +31,8 @@ As this package is and will never be added to the official [packagecontrol.io](h
 }
 ```
 
-Open command palette, select "Package Control: Install Package", search for "Default" and install it.
+Save the settings file.
+Open command palette, select _Package Control: Install Package_, search for _Default_ and install it.
 
 ##### Manual Setup
 
