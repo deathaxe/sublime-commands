@@ -18,7 +18,7 @@ The package author tries his best to keep up to date with the ongoing developmen
 
 ##### Package Control
 
-As this package is and will never be added to the official [packagecontrol.io](https://packagecontrol.io/) for official reasons, you need to add the following settings to your _Package_control.sublime-settings_ if you want Package Control to keep this package up to date for you.
+As this package is and will never be added to the official [packagecontrol.io](https://packagecontrol.io/) for official reasons, you need to add the following settings to your _User/Package Control.sublime-settings_ if you want Package Control to keep this package up to date for you.
 
 ```json
 "repositories":
@@ -30,6 +30,9 @@ As this package is and will never be added to the official [packagecontrol.io](h
     "sublime-commands": "Default"
 }
 ```
+
+Save the settings file.
+Open command palette, select _Package Control: Install Package_, search for _Default_ and install it.
 
 ##### Manual Setup
 
