@@ -17,6 +17,7 @@
     { "caption": "File: Save with Encoding", "command": "save_encoding"},
     { "caption": "File: Set Encoding", "command": "set_encoding"},
     { "caption": "File: Set Line Endings", "command": "set_line_endings" },
+    { "caption": "File: Print…", "command": "html_print" },
 
     // File Menu -> Close/Revert
     { "caption": "File: Rename File", "command": "rename_file" },
@@ -35,6 +36,7 @@
     { "caption": "Edit: Revert Diff Hunk", "command": "revert_hunk" },
     { "caption": "Edit: Revert Modification", "command": "revert_modification" },
     { "caption": "Edit: Copy", "command": "copy" },
+    { "caption": "Edit: Copy as HTML", "command": "copy_as_html", "args": {"enclosing_tags": true, "font_size": false} },
     { "caption": "Edit: Cut", "command": "cut" },
     { "caption": "Edit: Paste", "command": "paste" },
     { "caption": "Edit: Paste and Indent", "command": "paste_and_indent" },
@@ -315,6 +317,8 @@
     { "caption": "Project: Open", "command": "prompt_open_project_or_workspace" },
     { "caption": "Project: Switch", "command": "prompt_switch_project_or_workspace" },
     { "caption": "Project: Quick Switch Project…", "command": "prompt_select_workspace" },
+    { "caption": "Project: Clear Recent Projects", "command": "clear_recent_projects_and_workspaces" },
+    { "caption": "Project: Clear Missing Recent Projects", "command": "clear_missing_recent_projects_and_workspaces" },
     { "caption": "Project: Save As…", "command": "save_project_and_workspace_as" },
     { "caption": "Project: Edit Project",  "command": "open_file", "args": {"file": "${project}"} },
     { "caption": "Project: Close", "command": "close_workspace" },
