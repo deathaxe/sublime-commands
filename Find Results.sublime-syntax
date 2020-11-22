@@ -1,0 +1,40 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/syntax.html
+name: Find Results
+hidden: true
+scope: text.find-in-files
+contexts:
+  main:
+    - match: ^([^ ].*:\n)$
+      captures:
+        1: entity.name.filename.find-in-files
+    - match: ^( +[0-9]+)
+      captures:
+        1: constant.numeric.line-number.find-in-files
+    - match: ^( +[0-9]+)(:)(.+\n)$
+      captures:
+        1: constant.numeric.line-number.match.find-in-files
+        2: punctuation.line-number.match.find-in-files
+        3: match.find-in-files
+    - match: ^( +\.{2,10})$
+      captures:
+        1: constant.numeric.line-number.find-in-files
+    - match: ^Searching (\d+) file(?:s)? for (".+")(.+)?$
+      scope: header.find-in-files
+      captures:
+        1: variable.total_files_count.find-in-files
+        2: string.query.find-in-files
+    - match: ^(\d+) match(?:es)? (?:across|in) (\d+) file(?:s)?\n
+      scope: footer.find-in-files
+      captures:
+        1: variable.matched_count.find-in-files
+        2: variable.matched_files_count.find-in-files
+        3: sep.find-in-files
+    - match: ^(0) matches\n
+      scope: footer.find-in-files
+      captures:
+        1: variable.no_matches.find-in-files
+    - match: ^(0) matches
+      captures:
+        1: variable.no_matches.find-in-files
