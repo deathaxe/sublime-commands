@@ -1,0 +1,16 @@
+// This file contains information about some hidden settings
+// which are used by PackageDev to provide completions.
+{
+    // Controls whether to clear selections, if anything is selected
+    // in another winodw or application.
+    "clear_selection": false,
+
+    // Renders text in a tokenization debug mode. It can be used for
+    // syntax development to make sure all words are tokenized as
+    // expected.
+    "draw_debug": false,
+
+    // Renders autocompletion suggestions as phantom directly after
+    // the caret instead of popping up the completion panel.
+    "mini_auto_complete": false,
+}
