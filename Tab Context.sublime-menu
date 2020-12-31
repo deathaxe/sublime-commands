@@ -1,14 +1,11 @@
 [
 	{ "caption": "-", "id": "tab" },
-	{ "caption": "Close Tabs…", "children": [
-			{ "command": "close_selected", "args": { "group": -1 }, "caption": "Close" },
-			{ "command": "close_others_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Other Tabs" },
-			{ "command": "close_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Tabs to the Right" },
-			{ "command": "close_unmodified", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs" },
-			{ "command": "close_unmodified_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs to the Right" },
-			{ "command": "close_deleted_files", "args": { "group": -1 }, "caption": "Close Deleted Files" },
-		]
-	},
+	{ "command": "close_selected", "args": { "group": -1 }, "caption": "Close" },
+	{ "command": "close_others_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Other Tabs" },
+	{ "command": "close_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Tabs to the Right" },
+	{ "command": "close_unmodified", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs" },
+	{ "command": "close_unmodified_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs to the Right" },
+	{ "command": "close_deleted_files", "args": { "group": -1 }, "caption": "Close Deleted Files" },
 
 	{ "caption": "-", "id": "file" },
 	{ "command": "copy_path", "caption": "Copy File Path" },
