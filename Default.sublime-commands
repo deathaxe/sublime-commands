@@ -351,6 +351,8 @@
     // UI Preferences
     { "caption": "UI: Select Color Scheme", "command": "select_color_scheme" },
     { "caption": "UI: Select Theme", "command": "select_theme" },
+    { "caption": "UI: Customize Color Scheme", "command": "customize_color_scheme" },
+    { "caption": "UI: Customize Theme", "command": "customize_theme" },
     { "caption": "UI: Show Console", "command": "show_panel", "args": {"panel": "console"} },
     { "caption": "UI: Toggle Full Screen", "command": "toggle_full_screen"},
     { "caption": "UI: Toggle Distraction Free Mode", "command": "toggle_distraction_free" },
