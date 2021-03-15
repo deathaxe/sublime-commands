@@ -78,3 +78,9 @@ class TogglePreferenceCommand(sublime_plugin.ApplicationCommand):
         pref.set(setting, not pref.get(setting, False))
         if persist:
             sublime.save_settings("Preferences.sublime-settings")
+
+
+class ToggleDrawDebug(sublime_plugin.TextCommand):
+    def run(self, edit):
+        settings = self.view.settings()
+        settings.set("draw_debug", not settings.get("draw_debug", False))

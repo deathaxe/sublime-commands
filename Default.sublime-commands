@@ -415,6 +415,7 @@
     { "caption": "Plugin Development: Toggle Log Input", "command": "toggle_log_input" },
     { "caption": "Plugin Development: Toggle Log Indexing", "command": "toggle_log_indexing" },
     { "caption": "Plugin Development: Toggle Log Result Regex", "command": "toggle_log_result_regex" },
+    { "caption": "Plugin Development: Toggle Draw Debug", "command": "toggle_draw_debug" },
 
     // Sublime Merge Integration
     { "caption": "Sublime Merge: Open Repository", "command": "sublime_merge_open_repo" },
