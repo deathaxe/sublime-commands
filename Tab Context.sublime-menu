@@ -2,19 +2,28 @@
 	{ "caption": "-", "id": "tab" },
 	{ "command": "close_selected", "args": { "group": -1 }, "caption": "Close" },
 	{ "command": "close_others_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Other Tabs" },
+	{ "command": "close_to_left_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Tabs to the Left" },
 	{ "command": "close_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Tabs to the Right" },
 	{ "command": "close_unmodified", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs" },
+	{ "command": "close_unmodified_to_left_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs to the Left" },
 	{ "command": "close_unmodified_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs to the Right" },
 	{ "command": "close_deleted_files", "args": { "group": -1 }, "caption": "Close Deleted Files" },
+
+	{ "caption": "-", "id": "view" },
+	{ "command": "clone_file", "args": { "add_to_selection": true, "group": -1, "index": -1 }, "caption": "Split View" },
+
+	// { "caption": "-" },
+	// { "command": "new_file", "caption": "New File" },
+	// { "command": "prompt_open_file", "caption": "Open File" },
 
 	{ "caption": "-", "id": "file" },
 	{ "command": "copy_path", "caption": "Copy File Path" },
 	{ "command": "reveal_in_side_bar", "caption": "Reveal in Side Bar" },
-	{ "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"}, "caption": "Open Containing Folder…" },
 	{ "command": "open_in_browser", "caption": "Open in Browser" },
+	{ "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"}, "caption": "Open Containing Folder…" },
 
 	{ "caption": "-", "id": "repo_commands" },
-	{ "caption": "Open Git Repository…", "command": "sublime_merge_open_repo" },
+	{ "caption": "Open Repository…", "command": "sublime_merge_open_repo" },
 	{ "caption": "File History…", "command": "sublime_merge_file_history" },
 	{ "caption": "Blame File…", "command": "sublime_merge_blame_file" },
 
