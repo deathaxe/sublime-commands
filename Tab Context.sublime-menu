@@ -1,31 +1,112 @@
 [
 	{ "caption": "-", "id": "tab" },
-	{ "command": "close_selected", "args": { "group": -1 }, "caption": "Close" },
-	{ "command": "close_others_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Other Tabs" },
-	{ "command": "close_to_left_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Tabs to the Left" },
-	{ "command": "close_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Tabs to the Right" },
-	{ "command": "close_unmodified", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs" },
-	{ "command": "close_unmodified_to_left_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs to the Left" },
-	{ "command": "close_unmodified_to_right_by_index", "args": { "group": -1, "index": -1 }, "caption": "Close Unmodified Tabs to the Right" },
-	{ "command": "close_deleted_files", "args": { "group": -1 }, "caption": "Close Deleted Files" },
+	{
+		"caption": "Close",
+		"mnemonic": "C",
+		"command": "close_selected",
+		"args": { "group": -1 }
+	},
+	{
+		"caption": "Close Other Tabs",
+		"mnemonic": "O",
+		"command": "close_others_by_index",
+		"args": { "group": -1, "index": -1 }
+	},
+	{
+		"caption": "Close Tabs to the Left",
+		"mnemonic": "L",
+		"command": "close_to_left_by_index",
+		"args": { "group": -1, "index": -1 }
+	},
+	{
+		"caption": "Close Tabs to the Right",
+		"mnemonic": "R",
+		"command": "close_to_right_by_index",
+		"args": { "group": -1, "index": -1 }
+	},
+	{
+		"caption": "Close Unmodified Tabs",
+		"mnemonic": "U",
+		"command": "close_unmodified",
+		"args": { "group": -1, "index": -1 }
+	},
+	{
+		"caption": "Close Unmodified Tabs to the Left",
+		"mnemonic": "m",
+		"command": "close_unmodified_to_left_by_index",
+		"args": { "group": -1, "index": -1 }
+	},
+	{
+		"caption": "Close Unmodified Tabs to the Right",
+		"mnemonic": "n",
+		"command": "close_unmodified_to_right_by_index",
+		"args": { "group": -1, "index": -1 }
+	},
+	{
+		"caption": "Close Deleted Files",
+		"mnemonic": "D",
+		"command": "close_deleted_files",
+		"args": { "group": -1 }
+	},
 
 	{ "caption": "-", "id": "view" },
-	{ "command": "clone_file", "args": { "add_to_selection": true, "group": -1, "index": -1 }, "caption": "Split View" },
-
-	// { "caption": "-" },
-	// { "command": "new_file", "caption": "New File" },
-	// { "command": "prompt_open_file", "caption": "Open File" },
+	// {
+	// 	"caption": "New File",
+	// 	"mnemonic": "N",
+	// 	"command": "new_file"
+	// },
+	// {
+	// 	"caption": "Open File",
+	// 	"mnemonic": "O",
+	// 	"command": "prompt_open_file"
+	// },
+	{
+		"caption": "Split View",
+		"mnemonic": "S",
+		"command": "clone_file",
+		"args": { "add_to_selection": true, "group": -1, "index": -1 }
+	},
 
 	{ "caption": "-", "id": "file" },
-	{ "command": "copy_path", "caption": "Copy File Path" },
-	{ "command": "reveal_in_side_bar", "caption": "Reveal in Side Bar" },
-	{ "command": "open_in_browser", "caption": "Open in Browser" },
-	{ "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"}, "caption": "Open Containing Folder…" },
+
+	{
+		"caption": "Copy File Path",
+		"mnemonic": "F",
+		"command": "copy_path"
+	},
+	{
+		"caption": "Reveal in Side Bar",
+		"mnemonic": "",
+		"command": "reveal_in_side_bar"
+	},
+	{
+		"caption": "Open in Browser",
+		"mnemonic": "B",
+		"command": "open_in_browser"
+	},
+	{
+		"caption": "Open Containing Folder…",
+		"mnemonic": "",
+		"command": "open_dir",
+		"args": {"dir": "$file_path", "file": "$file_name"}
+	},
 
 	{ "caption": "-", "id": "repo_commands" },
-	{ "caption": "Open Repository…", "command": "sublime_merge_open_repo" },
-	{ "caption": "File History…", "command": "sublime_merge_file_history" },
-	{ "caption": "Blame File…", "command": "sublime_merge_blame_file" },
+	{
+		"caption": "Open Repository…",
+		"mnemonic": "",
+		"command": "sublime_merge_open_repo"
+	},
+	{
+		"caption": "File History…",
+		"mnemonic": "",
+		"command": "sublime_merge_file_history"
+	},
+	{
+		"caption": "Blame File…",
+		"mnemonic": "",
+		"command": "sublime_merge_blame_file"
+	},
 
 	{ "caption": "-", "id": "end" }
 ]
