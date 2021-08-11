@@ -2,7 +2,7 @@
 // which are used by PackageDev to provide completions.
 {
     // Controls whether to clear selections, if anything is selected
-    // in another winodw or application.
+    // in another window or application.
     "clear_selection": false,
 
     // Renders text in a tokenization debug mode. It can be used for
