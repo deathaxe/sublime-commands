@@ -34,8 +34,6 @@
     // Edit
     { "caption": "Edit: Undo", "command": "undo" },
     { "caption": "Edit: Redo or Repeat", "command": "redo_or_repeat" },
-    { "caption": "Edit: Revert Diff Hunk", "command": "revert_hunk" },
-    { "caption": "Edit: Revert Modification", "command": "revert_modification" },
     { "caption": "Edit: Copy", "command": "copy" },
     { "caption": "Edit: Copy as HTML", "command": "copy_as_html", "args": {"enclosing_tags": true, "font_size": false} },
     { "caption": "Edit: Cut", "command": "cut" },
@@ -113,6 +111,13 @@
     { "caption": "Selection: Expand to Tag", "command": "expand_selection", "args": {"to": "tag"}},
     { "caption": "Selection: Undo Selection", "command": "soft_undo" },
     { "caption": "Selection: Redo Selection", "command": "soft_redo" },
+
+    // History
+    { "caption": "History: Revert Hunk", "command": "revert_hunk" },
+    { "caption": "History: Revert Modification", "command": "revert_modification" },
+    { "caption": "History: Next Modification", "command": "next_modification" },
+    { "caption": "History: Previous Modification", "command": "prev_modification" },
+    { "caption": "History: Toggle Inline Diff", "command": "toggle_inline_diff" },
 
     // Code Folding
     { "caption": "Code Folding: Fold", "command": "fold" },
@@ -305,8 +310,6 @@
     { "caption": "Goto: Line…", "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
     { "caption": "Goto: Jump Back", "command": "jump_back" },
     { "caption": "Goto: Jump Forward", "command": "jump_forward" },
-    { "caption": "Goto: Next Modification", "command": "next_modification" },
-    { "caption": "Goto: Previous Modification", "command": "prev_modification" },
     { "caption": "Goto: Selection", "command": "show_at_center" },
     { "caption": "Goto: Matching Bracket", "command": "move_to", "args": {"to": "brackets"} },
     { "caption": "Switch: Next File", "command": "next_view" },
