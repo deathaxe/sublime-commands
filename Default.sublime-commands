@@ -364,7 +364,7 @@
     { "caption": "UI: Toggle Status Bar", "command": "toggle_status_bar" },
     { "caption": "UI: Toggle Menu", "command": "toggle_menubar" },
 
-    { "caption": "HTML: Wrap Selection With Tag", "command": "insert_snippet", "args": { "name": "Packages/XML/Snippets/long-tag.sublime-snippet" } },
+    { "caption": "HTML: Wrap Selection With Tag", "command": "insert_snippet", "args": { "name": "Packages/XML/Snippets/xml-long-tag.sublime-snippet" } },
     { "caption": "HTML: Encode Special Characters", "command": "encode_html_entities" },
 
     { "caption": "Rot13 Selection", "command": "rot13" },
