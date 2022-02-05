@@ -399,20 +399,7 @@
     // Tools Developement
     { "caption": "Plugin Development: Profile Events", "command": "profile_plugins" },
     { "caption": "Plugin Development: Convert Syntax to .sublime-syntax", "command": "convert_syntax" },
-
-    // Help
-    { "caption": "About", "command": "show_about_window" },
-    { "caption": "Changelog", "command": "show_changelog" },
-    { "caption": "Check for Updates", "command": "update_check" },
-    { "caption": "Indexing Status", "command": "show_progress_window" },
-
-    // Command Pallet only
-    { "caption": "Arithmetic", "command": "arithmetic"},
-    { "caption": "Preferences", "command": "edit_package_settings" },
-    { "caption": "View Package File", "command": "view_resource" },
-    { "caption": "Convert Color Scheme", "command": "convert_color_scheme" },
-
-    // Debugging
+    { "caption": "Plugin Development: Convert Color Scheme to .sublime-color-scheme", "command": "convert_color_scheme" },
     { "caption": "Plugin Development: Toggle Log Built Sytems", "command": "toggle_log_built_systems" },
     { "caption": "Plugin Development: Toggle Log Commands", "command": "toggle_log_commands" },
     { "caption": "Plugin Development: Toggle Log Control Tree", "command": "toggle_log_control_tree" },
@@ -420,6 +407,18 @@
     { "caption": "Plugin Development: Toggle Log Indexing", "command": "toggle_log_indexing" },
     { "caption": "Plugin Development: Toggle Log Result Regex", "command": "toggle_log_result_regex" },
     { "caption": "Plugin Development: Toggle Draw Debug", "command": "toggle_draw_debug" },
+
+    // Help
+    { "caption": "Help: Documentation", "command": "open_url", "args": {"url": "https://www.sublimetext.com/docs/"} },
+    { "caption": "Help: Indexing Status", "command": "show_progress_window" },
+    { "caption": "Help: Check for Updates", "command": "update_check", "platform": "!Linux" },
+    { "caption": "Help: Changelog", "command": "show_changelog" },
+    { "caption": "Help: About", "command": "show_about_window" },
+
+    // Command Pallet only
+    { "caption": "Arithmetic", "command": "arithmetic"},
+    { "caption": "Preferences", "command": "edit_package_settings" },
+    { "caption": "View Package File", "command": "view_resource" },
 
     // Sublime Merge Integration
     { "caption": "Sublime Merge: Open Repository", "command": "sublime_merge_open_repo" },
