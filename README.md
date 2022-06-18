@@ -57,7 +57,7 @@ git clone https://github.com/deathaxe/sublime-commands "Default"
 
 ##### Windows
 
-```sh
+```dos
 cd "%APPDATA%\Sublime Text 3\Packages"
 git clone https://github.com/deathaxe/sublime-commands "Default"
 ```
