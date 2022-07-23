@@ -13,4 +13,9 @@
     // Renders autocompletion suggestions as phantom directly after
     // the caret instead of popping up the completion panel.
     "mini_auto_complete": false,
+
+    // Controls whether to display an automatically generated name
+    // on a view's tab control based on its content.
+    // If `false` tabs of unsaved files always display "untitled".
+    "set_unsaved_view_name": true,
 }
