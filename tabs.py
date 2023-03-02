@@ -1,6 +1,12 @@
 import sublime_plugin
 
 
+class CloseAllInGroupCommand(sublime_plugin.WindowCommand):
+    def run(self, group):
+        for view in self.window.views_in_group(group):
+            view.close()
+
+
 class CloseToLeftByIndexCommand(sublime_plugin.WindowCommand):
 
     def run(self, group = -1, index = -1):

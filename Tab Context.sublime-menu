@@ -7,6 +7,12 @@
 		"args": { "group": -1 }
 	},
 	{
+		"caption": "Close All Tabs",
+		"mnemonic": "A",
+		"command": "close_all_in_group",
+		"args": { "group": -1 }
+	},
+	{
 		"caption": "Close Other Tabs",
 		"mnemonic": "O",
 		"command": "close_others_by_index",
