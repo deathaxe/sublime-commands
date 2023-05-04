@@ -55,6 +55,14 @@
     { "caption": "Edit: Delete to Beginning", "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete to Hard BOL.sublime-macro"} },
     { "caption": "Edit: Trim Trailing White Space", "command": "trim_trailing_white_space" },
 
+    { "caption": "Edit: Wrap Lines", "command": "wrap_lines" },
+    { "caption": "Edit: Wrap Lines at 70 characters", "command": "wrap_lines", "args": {"width": 70} },
+    { "caption": "Edit: Wrap Lines at 72 characters", "command": "wrap_lines", "args": {"width": 72} },
+    { "caption": "Edit: Wrap Lines at 78 characters", "command": "wrap_lines", "args": {"width": 78} },
+    { "caption": "Edit: Wrap Lines at 80 characters", "command": "wrap_lines", "args": {"width": 80} },
+    { "caption": "Edit: Wrap Lines at 100 characters", "command": "wrap_lines", "args": {"width": 100} },
+    { "caption": "Edit: Wrap Lines at 120 characters", "command": "wrap_lines", "args": {"width": 120} },
+
     { "caption": "Convert Case: Upper Case", "command": "upper_case" },
     { "caption": "Convert Case: Lower Case", "command": "lower_case" },
     { "caption": "Convert Case: Title Case", "command": "title_case" },
@@ -172,14 +180,14 @@
     { "caption": "View: Ruler at Column 120", "command": "set_setting", "args": {"setting": "rulers", "value": [120]} },
 
     // View Word Wrap
-    { "caption": "Word Wrap: Toggle", "command": "toggle_setting", "args": {"setting": "word_wrap"} },
-    { "caption": "Word Wrap: Column Automatic", "command": "set_setting", "args": {"setting": "wrap_width", "value": 0} },
-    { "caption": "Word Wrap: Column 70", "command": "set_setting", "args": {"setting": "wrap_width", "value": 70} },
-    { "caption": "Word Wrap: Column 72", "command": "set_setting", "args": {"setting": "wrap_width", "value": 72} },
-    { "caption": "Word Wrap: Column 78", "command": "set_setting", "args": {"setting": "wrap_width", "value": 78} },
-    { "caption": "Word Wrap: Column 80", "command": "set_setting", "args": {"setting": "wrap_width", "value": 80} },
-    { "caption": "Word Wrap: Column 100", "command": "set_setting", "args": {"setting": "wrap_width", "value": 100} },
-    { "caption": "Word Wrap: Column 120", "command": "set_setting", "args": {"setting": "wrap_width", "value": 120} },
+    { "caption": "View: Toggle Word Wrap", "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+    { "caption": "View: Word Wrap at Automatic Column", "command": "set_setting", "args": {"setting": "wrap_width", "value": 0} },
+    { "caption": "View: Word Wrap at Column 70", "command": "set_setting", "args": {"setting": "wrap_width", "value": 70} },
+    { "caption": "View: Word Wrap at Column 72", "command": "set_setting", "args": {"setting": "wrap_width", "value": 72} },
+    { "caption": "View: Word Wrap at Column 78", "command": "set_setting", "args": {"setting": "wrap_width", "value": 78} },
+    { "caption": "View: Word Wrap at Column 80", "command": "set_setting", "args": {"setting": "wrap_width", "value": 80} },
+    { "caption": "View: Word Wrap at Column 100", "command": "set_setting", "args": {"setting": "wrap_width", "value": 100} },
+    { "caption": "View: Word Wrap at Column 120", "command": "set_setting", "args": {"setting": "wrap_width", "value": 120} },
 
     // View Layouts
     {
