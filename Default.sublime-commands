@@ -6,7 +6,7 @@
     { "caption": "File: Open File", "command": "prompt_open_file" },
     { "caption": "File: Open Folder", "command": "prompt_open_folder" },
     { "caption": "File: Clone View", "command": "clone_file" },
-    { "caption": "File: Split View", "command": "clone_file", "args": {"add_to_selection": true}},
+    { "caption": "File: Split View", "command": "clone_file", "args": {"add_to_selection": true, "retain_viewport_position": true} },
     { "caption": "File: Clone View To New Group", "command": "clone_file_to_new_group" },
     { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
     { "caption": "File: Reopen with Encoding", "command": "reopen_encoding"},
@@ -14,7 +14,7 @@
     // File Menu -> Save
     { "caption": "File: Save", "command": "save", "args": { "async": true } },
     { "caption": "File: Save As…", "command": "prompt_save_as" },
-    { "caption": "File: Save All", "command": "save_all", "args": { "async": true } },
+    { "caption": "File: Save All", "command": "save_all" },
     { "caption": "File: Save with Encoding", "command": "save_encoding"},
     { "caption": "File: Set Encoding", "command": "set_encoding"},
     { "caption": "File: Set Line Endings", "command": "set_line_endings" },
@@ -67,6 +67,8 @@
     { "caption": "Toggle Comment", "command": "toggle_comment", "args": {"block": false} },
     { "caption": "Toggle Block Comment", "command": "toggle_comment", "args": {"block": true} },
 
+    { "caption": "Wrap at Ruler", "command": "wrap_lines" },
+
     // Bookmarks
     { "caption": "Bookmarks: Toggle", "command": "toggle_bookmark" },
     { "caption": "Bookmarks: Select Next", "command": "next_bookmark" },
@@ -100,20 +102,21 @@
 
     // Selection
     { "caption": "Selection: Split into Lines", "command": "split_selection_into_lines" },
-    { "caption": "Selection: Add Previous Line", "command": "select_lines", "args": {"forward": "false"}},
-    { "caption": "Selection: Add Next Line", "command": "select_lines", "args": {"forward": "true"}},
+    { "caption": "Selection: Add Previous Line", "command": "select_lines", "args": {"forward": false} },
+	{ "caption": "Selection: Add Next Line", "command": "select_lines", "args": {"forward": true} },
     { "caption": "Selection: Single Selection", "command": "single_selection" },
     { "caption": "Selection: Invert Selection", "command": "invert_selection" },
     { "caption": "Selection: Select All", "command": "select_all" },
-    { "caption": "Selection: Expand Smart", "command": "expand_selection", "args": {"to": "smart"}},
+    { "caption": "Selection: Expand Smart", "command": "expand_selection", "args": {"to": "smart"} },
     { "caption": "Selection: Expand to Line Upward", "command": "expand_selection", "args": {"to": "line_prev"} },
-    { "caption": "Selection: Expand to Line", "command": "expand_selection", "args": {"to": "line"}},
-    { "caption": "Selection: Expand to Word", "command": "expand_selection", "args": {"to": "word"}},
-    { "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph"},
-    { "caption": "Selection: Expand to Scope", "command": "expand_selection", "args": {"to": "scope"}},
-    { "caption": "Selection: Expand to Brackets", "command": "expand_selection", "args": {"to": "brackets"}},
-    { "caption": "Selection: Expand to Indentation", "command": "expand_selection", "args": {"to": "indentation"}},
-    { "caption": "Selection: Expand to Tag", "command": "expand_selection", "args": {"to": "tag"}},
+    { "caption": "Selection: Expand to Line", "command": "expand_selection", "args": {"to": "line"} },
+    { "caption": "Selection: Expand to Word", "command": "expand_selection", "args": {"to": "word"} },
+    { "caption": "Selection: Expand to Block", "command": "expand_selection_to_paragraph" },
+	{ "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph", "args": {"markup_aware": true} },
+    { "caption": "Selection: Expand to Scope", "command": "expand_selection", "args": {"to": "scope"} },
+    { "caption": "Selection: Expand to Brackets", "command": "expand_selection", "args": {"to": "brackets"} },
+    { "caption": "Selection: Expand to Indentation", "command": "expand_selection", "args": {"to": "indentation"} },
+    { "caption": "Selection: Expand to Tag", "command": "expand_selection", "args": {"to": "tag"} },
     { "caption": "Selection: Undo Selection", "command": "soft_undo" },
     { "caption": "Selection: Redo Selection", "command": "soft_redo" },
 
@@ -126,7 +129,7 @@
 
     // Code Folding
     { "caption": "Code Folding: Fold", "command": "fold" },
-    { "caption": "Code Folding: Fold All", "command": "fold_all" },
+    { "caption": "Code Folding: Fold All", "command": "fold_by_level", "args": {"level": 1} },
     { "caption": "Code Folding: Unfold", "command": "unfold" },
     { "caption": "Code Folding: Unfold All", "command": "unfold_all" },
     { "caption": "Code Folding: Fold Tag Attributes", "command": "fold_tag_attributes" },
@@ -140,7 +143,7 @@
     { "caption": "Code Folding: by Level 9", "command": "fold_by_level", "args": {"level": 9} },
 
     // Indentation
-    { "caption": "Indentation: Guess Settings From Buffer", "command": "detect_indentation"},
+    { "caption": "Indentation: Guess Settings From Buffer", "command": "detect_indentation" },
     { "caption": "Indentation: Tab Width: 1", "command": "set_setting", "args": {"setting": "tab_size", "value": 1} },
     { "caption": "Indentation: Tab Width: 2", "command": "set_setting", "args": {"setting": "tab_size", "value": 2} },
     { "caption": "Indentation: Tab Width: 3", "command": "set_setting", "args": {"setting": "tab_size", "value": 3} },
@@ -323,6 +326,7 @@
     // Goto
     { "caption": "Goto: Anything…", "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
     { "caption": "Goto: Symbol…", "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+    { "caption": "Goto Word…", "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
     { "caption": "Goto: Symbol in Project…", "command": "goto_symbol_in_project" },
     { "caption": "Goto: Definition…", "command": "goto_definition" },
     { "caption": "Goto: Reference…", "command": "goto_reference" },
@@ -335,6 +339,7 @@
     { "caption": "Switch: Previous File", "command": "prev_view" },
     { "caption": "Switch: Next File in Stack", "command": "next_view_in_stack" },
     { "caption": "Switch: Previous File in Stack", "command": "prev_view_in_stack" },
+    { "caption": "Switch Header/Implementation", "command": "switch_file", "args": {"extensions": ["cpp", "cxx", "cc", "c", "hpp", "hxx", "hh", "h", "ipp", "inl", "m", "mm"]} },
 
     // Project
     { "caption": "Project: Open", "command": "prompt_open_project_or_workspace" },
@@ -354,11 +359,14 @@
     // Preferences
     { "caption": "Install Package Control", "command": "install_package_control" },
     { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} },
-    { "caption": "Preferences: Settings", "command": "edit_settings", "args": {
-            "base_file": "${packages}/Default/Preferences.sublime-settings",
-            "default": "// Settings in here override those in \"Default/Preferences.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
-        }
-    },
+    {
+		"caption": "Preferences: Settings",
+		"command": "edit_settings", "args":
+		{
+			"base_file": "${packages}/Default/Preferences.sublime-settings",
+			"default": "// Settings in here override those in \"Default/Preferences.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
+		}
+	},
     { "caption": "Preferences: Settings – Syntax Specific", "command": "edit_syntax_settings" },
     { "caption": "Preferences: Settings – Distraction Free", "command": "edit_settings", "args": {
             "base_file": "${packages}/Default/Distraction Free.sublime-settings",
@@ -377,14 +385,14 @@
     { "caption": "UI: Customize Color Scheme", "command": "customize_color_scheme" },
     { "caption": "UI: Customize Theme", "command": "customize_theme" },
     { "caption": "UI: Show Console", "command": "show_panel", "args": {"panel": "console"} },
-    { "caption": "UI: Toggle Full Screen", "command": "toggle_full_screen"},
+    { "caption": "UI: Toggle Full Screen", "command": "toggle_full_screen" },
     { "caption": "UI: Toggle Distraction Free Mode", "command": "toggle_distraction_free" },
     { "caption": "UI: Toggle Side Bar", "command": "toggle_side_bar" },
     { "caption": "UI: Toggle Open Files in Side Bar", "command": "toggle_show_open_files" },
     { "caption": "UI: Toggle Minimap", "command": "toggle_minimap" },
     { "caption": "UI: Toggle Tabs", "command": "toggle_tabs" },
     { "caption": "UI: Toggle Status Bar", "command": "toggle_status_bar" },
-    { "caption": "UI: Toggle Menu", "command": "toggle_menubar" },
+    { "caption": "UI: Toggle Menu", "command": "toggle_menu" },
 
     { "caption": "HTML: Wrap Selection With Tag", "command": "insert_snippet", "args": { "name": "Packages/XML/Snippets/xml-long-tag.sublime-snippet" } },
     { "caption": "HTML: Encode Special Characters", "command": "encode_html_entities" },
@@ -435,7 +443,7 @@
     { "caption": "Help: About", "command": "show_about_window" },
 
     // Command Pallet only
-    { "caption": "Arithmetic", "command": "arithmetic"},
+    { "caption": "Arithmetic", "command": "arithmetic" },
     { "caption": "Preferences", "command": "edit_package_settings" },
     { "caption": "View Package File", "command": "view_resource" },
 
