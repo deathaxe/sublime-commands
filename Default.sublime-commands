@@ -67,8 +67,6 @@
     { "caption": "Toggle Comment", "command": "toggle_comment", "args": {"block": false} },
     { "caption": "Toggle Block Comment", "command": "toggle_comment", "args": {"block": true} },
 
-    { "caption": "Wrap at Ruler", "command": "wrap_lines" },
-
     // Bookmarks
     { "caption": "Bookmarks: Toggle", "command": "toggle_bookmark" },
     { "caption": "Bookmarks: Select Next", "command": "next_bookmark" },
@@ -129,10 +127,11 @@
 
     // Code Folding
     { "caption": "Code Folding: Fold", "command": "fold" },
-    { "caption": "Code Folding: Fold All", "command": "fold_by_level", "args": {"level": 1} },
+    { "caption": "Code Folding: Fold All", "command": "fold_all" },
     { "caption": "Code Folding: Unfold", "command": "unfold" },
     { "caption": "Code Folding: Unfold All", "command": "unfold_all" },
     { "caption": "Code Folding: Fold Tag Attributes", "command": "fold_tag_attributes" },
+    { "caption": "Code Folding: by Level 1", "command": "fold_by_level", "args": {"level": 1} },
     { "caption": "Code Folding: by Level 2", "command": "fold_by_level", "args": {"level": 2} },
     { "caption": "Code Folding: by Level 3", "command": "fold_by_level", "args": {"level": 3} },
     { "caption": "Code Folding: by Level 4", "command": "fold_by_level", "args": {"level": 4} },
