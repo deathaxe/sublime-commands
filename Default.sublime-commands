@@ -101,7 +101,7 @@
     // Selection
     { "caption": "Selection: Split into Lines", "command": "split_selection_into_lines" },
     { "caption": "Selection: Add Previous Line", "command": "select_lines", "args": {"forward": false} },
-	{ "caption": "Selection: Add Next Line", "command": "select_lines", "args": {"forward": true} },
+    { "caption": "Selection: Add Next Line", "command": "select_lines", "args": {"forward": true} },
     { "caption": "Selection: Single Selection", "command": "single_selection" },
     { "caption": "Selection: Invert Selection", "command": "invert_selection" },
     { "caption": "Selection: Select All", "command": "select_all" },
@@ -110,7 +110,7 @@
     { "caption": "Selection: Expand to Line", "command": "expand_selection", "args": {"to": "line"} },
     { "caption": "Selection: Expand to Word", "command": "expand_selection", "args": {"to": "word"} },
     { "caption": "Selection: Expand to Block", "command": "expand_selection_to_paragraph" },
-	{ "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph", "args": {"markup_aware": true} },
+    { "caption": "Selection: Expand to Paragraph", "command": "expand_selection_to_paragraph", "args": {"markup_aware": true} },
     { "caption": "Selection: Expand to Scope", "command": "expand_selection", "args": {"to": "scope"} },
     { "caption": "Selection: Expand to Brackets", "command": "expand_selection", "args": {"to": "brackets"} },
     { "caption": "Selection: Expand to Indentation", "command": "expand_selection", "args": {"to": "indentation"} },
@@ -359,13 +359,13 @@
     { "caption": "Install Package Control", "command": "install_package_control" },
     { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} },
     {
-		"caption": "Preferences: Settings",
-		"command": "edit_settings", "args":
-		{
-			"base_file": "${packages}/Default/Preferences.sublime-settings",
-			"default": "// Settings in here override those in \"Default/Preferences.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
-		}
-	},
+        "caption": "Preferences: Settings",
+        "command": "edit_settings", "args":
+        {
+            "base_file": "${packages}/Default/Preferences.sublime-settings",
+            "default": "// Settings in here override those in \"Default/Preferences.sublime-settings\",\n// and are overridden in turn by syntax-specific settings.\n{\n\t$0\n}\n"
+        }
+    },
     { "caption": "Preferences: Settings – Syntax Specific", "command": "edit_syntax_settings" },
     { "caption": "Preferences: Settings – Distraction Free", "command": "edit_settings", "args": {
             "base_file": "${packages}/Default/Distraction Free.sublime-settings",
