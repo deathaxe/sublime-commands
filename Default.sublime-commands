@@ -333,7 +333,7 @@
     // Goto
     { "caption": "Goto: Anything…", "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
     { "caption": "Goto: Symbol…", "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
-    { "caption": "Goto Word…", "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
+    { "caption": "Goto: Word…", "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
     { "caption": "Goto: Symbol in Project…", "command": "goto_symbol_in_project" },
     { "caption": "Goto: Definition…", "command": "goto_definition" },
     { "caption": "Goto: Reference…", "command": "goto_reference" },
