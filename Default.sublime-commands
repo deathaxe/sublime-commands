@@ -459,4 +459,9 @@
     { "caption": "Sublime Merge: File History", "command": "sublime_merge_file_history" },
     { "caption": "Sublime Merge: Folder History", "command": "sublime_merge_folder_history" },
     { "caption": "Sublime Merge: Blame File", "command": "sublime_merge_blame_file" },
+
+    // Extra
+    { "caption": "Edit: Clear Undo Stack", "command": "clear_undo_stack" },
+    { "caption": "Show White Spaces: In Selection", "command": "show_white_spaces", "args": {"options": "selection"} },
+    { "caption": "Show White Spaces: All", "command": "show_white_spaces", "args": {"options": "all"} },
 ]
