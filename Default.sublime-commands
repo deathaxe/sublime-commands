@@ -462,6 +462,6 @@
 
     // Extra
     { "caption": "Edit: Clear Undo Stack", "command": "clear_undo_stack" },
-    { "caption": "Show White Spaces: In Selection", "command": "show_white_spaces", "args": {"options": "selection"} },
-    { "caption": "Show White Spaces: All", "command": "show_white_spaces", "args": {"options": "all"} },
+    { "caption": "Show White Spaces: In Selection", "command": "set_setting", "args": { "setting": "draw_white_space", "value": "selection" } },
+    { "caption": "Show White Spaces: All", "command": "set_setting", "args": { "setting": "draw_white_space", "value": "all" } },
 ]
