@@ -387,6 +387,7 @@
     },
 
     // UI Preferences
+    { "caption": "UI: Choose Font", "command": "choose_font" },
     { "caption": "UI: Select Color Scheme", "command": "select_color_scheme" },
     { "caption": "UI: Select Theme", "command": "select_theme" },
     { "caption": "UI: Customize Color Scheme", "command": "customize_color_scheme" },
