@@ -7,7 +7,6 @@
     { "caption": "File: Open Folder", "command": "prompt_open_folder" },
     { "caption": "File: Clone View", "command": "clone_file" },
     { "caption": "File: Split View", "command": "clone_file", "args": {"add_to_selection": true, "retain_viewport_position": true} },
-    { "caption": "File: Clone View To New Group", "command": "clone_file_to_new_group" },
     { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
     { "caption": "File: Reopen with Encoding", "command": "reopen_encoding"},
 
@@ -462,7 +461,6 @@
     { "caption": "Sublime Merge: Blame File", "command": "sublime_merge_blame_file" },
 
     // Extra
-    { "caption": "Edit: Clear Undo Stack", "command": "clear_undo_stack" },
     { "caption": "Show White Spaces: In Selection", "command": "set_setting", "args": { "setting": "draw_white_space", "value": "selection" } },
     { "caption": "Show White Spaces: All", "command": "set_setting", "args": { "setting": "draw_white_space", "value": "all" } },
 ]
