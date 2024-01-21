@@ -6,7 +6,7 @@ import sublime_api
 import sublime_plugin
 
 
-PACKAGES_FILE_REGEX = r"^Packages/(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$"
+PACKAGES_FILE_REGEX = r"^Packages/(..[^:]*):([0-9]+):?([0-9]+)?"
 
 
 class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
@@ -14,6 +14,8 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         if not hasattr(self, "output_view"):
             # Try not to call get_output_panel until the regexes are assigned
             self.output_view = self.window.create_output_panel("exec")
+            self.output_view.set_scratch(True)
+            self.output_view.set_read_only(True)
 
         settings = self.output_view.settings()
         settings.set("result_file_regex", PACKAGES_FILE_REGEX)
@@ -22,6 +24,7 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         settings.set("line_numbers", False)
         settings.set("gutter", False)
         settings.set("scroll_past_end", False)
+        settings.set("syntax", kwargs.get("syntax", "Packages/Default/Syntax Tests.sublime-syntax"))
 
         # Call create_output_panel a second time after assigning the above
         # settings, so that it'll be picked up as a result buffer
@@ -37,12 +40,12 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
             if is_syntax(relative_path):
                 tests = []
                 for t in sublime.find_resources("syntax_test*"):
-                    lines = sublime.load_resource(t).splitlines()
-                    if len(lines) == 0:
+                    try:
+                        first_line = sublime.load_resource(t)[:1024].splitlines()[0]
+                    except:
                         continue
-                    first_line = lines[0]
 
-                    match = re.match('^.*SYNTAX TEST .* "(.*?)"', first_line)
+                    match = re.match(r'^.*SYNTAX TEST (?:[\w-]+ )*\"(.*?)\"', first_line)
                     if not match:
                         continue
 
@@ -65,13 +68,15 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         total_assertions = 0
         failed_assertions = 0
 
+        pattern = re.compile(r'(.+):([^:]+):([^:]+): \[([^\]]+)\][^\[]+\[([^\]]+)\]')
+        repl = r'\1:\2:\3\n  expect: \4\n   found: \5\n'
+
         for t in tests:
             assertions, test_output_lines = sublime_api.run_syntax_test(t)
             total_assertions += assertions
             if len(test_output_lines) > 0:
                 failed_assertions += len(test_output_lines)
-                for line in test_output_lines:
-                    append(self.output_view, line + "\n")
+                append(self.output_view, ''.join(pattern.sub(repl, line) for line in test_output_lines))
 
         if failed_assertions > 0:
             message = "FAILED: {} of {} assertions in {} files failed\n"
