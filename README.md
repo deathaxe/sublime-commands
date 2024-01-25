@@ -1,6 +1,6 @@
 # Sublime Commands
 
-Sublime Text's command pallet misses most of the internal commands exposed by the main menu.
+Sublime Text's command palette misses most of the internal commands exposed by the main menu.
 
 Packages like [Missing Commands](https://github.com/fjl/Sublime-Missing-Palette-Commands) therefore provide all commands not located in Sublime Text's _Default_ package.
 
