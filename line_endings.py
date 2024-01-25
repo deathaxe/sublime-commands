@@ -40,7 +40,7 @@ class SetLineEndings(sublime_plugin.TextCommand):
     """A replacement command for the builtin `set_line_ending`.
 
     This class provides an input handler to list the available line endings
-    in the command pallet using an `ListInputHanlder` rather then listing all
+    in the command palette using an `ListInputHanlder` rather then listing all
     the values as separate commands.
     """
 
