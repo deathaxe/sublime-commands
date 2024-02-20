@@ -8,7 +8,9 @@
     { "caption": "File: Clone View", "command": "clone_file" },
     { "caption": "File: Split View", "command": "clone_file", "args": {"add_to_selection": true, "retain_viewport_position": true} },
     { "caption": "File: Reopen Closed File", "command": "reopen_last_file" },
-    { "caption": "File: Reopen with Encoding", "command": "reopen_encoding"},
+    { "caption": "File: Reopen File with Encoding", "command": "reopen_encoding"},
+    { "caption": "File: Reopen File as Image", "command": "force_reopen_as", "args": {"type": "image"},  },
+    { "caption": "File: Reopen File as Text", "command": "force_reopen_as", "args": {"type": "text"},  },
 
     // File Menu -> Save
     { "caption": "File: Save", "command": "save", "args": { "async": true } },
