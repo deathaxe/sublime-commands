@@ -3,6 +3,7 @@ import sublime_plugin
 
 
 class ResourceNameInputHandler(sublime_plugin.ListInputHandler):
+
     def name(self):
         return "name"
 
@@ -17,7 +18,9 @@ class ResourceNameInputHandler(sublime_plugin.ListInputHandler):
         start = len(PACKAGES)
         return [
             f[start:] for f in sublime.find_resources('')
-            if f.startswith(PACKAGES) and not any(fe in f for fe in exclude)
+            if f.startswith(PACKAGES)
+            and not f.endswith('.sublime-package')
+            and not any(fe in f for fe in exclude)
         ]
 
 
