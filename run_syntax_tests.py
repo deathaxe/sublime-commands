@@ -24,7 +24,7 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         settings.set("line_numbers", False)
         settings.set("gutter", False)
         settings.set("scroll_past_end", False)
-        settings.set("syntax", kwargs.get("syntax", "Packages/Default/Syntax Tests.sublime-syntax"))
+        settings.set("syntax", kwargs.get("syntax", "Packages/Default/Sublime Syntax Test Results.sublime-syntax"))
 
         # Call create_output_panel a second time after assigning the above
         # settings, so that it'll be picked up as a result buffer
@@ -69,7 +69,7 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         failed_assertions = 0
 
         pattern = re.compile(r'(.+):([^:]+):([^:]+): \[([^\]]+)\][^\[]+\[([^\]]+)\]')
-        repl = r'\1:\2:\3\n  expect: \4\n   found: \5\n'
+        repl = r'\1:\2:\3\n  ✓ \4\n  ! \5\n'
 
         for t in tests:
             assertions, test_output_lines = sublime_api.run_syntax_test(t)
