@@ -10,7 +10,12 @@ PACKAGES_FILE_REGEX = r"^Packages/(..[^:]*):([0-9]+):?([0-9]+)?"
 
 
 class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
-    def run(self, find_all=False, **kwargs):
+    def run(
+        self,
+        find_all=False,
+        syntax="Packages/Default/Sublime Syntax Test Results.sublime-syntax",
+        **kwargs
+    ):
         if not hasattr(self, "output_view"):
             # Try not to call get_output_panel until the regexes are assigned
             self.output_view = self.window.create_output_panel("exec")
@@ -24,7 +29,7 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         settings.set("line_numbers", False)
         settings.set("gutter", False)
         settings.set("scroll_past_end", False)
-        settings.set("syntax", kwargs.get("syntax", "Packages/Default/Sublime Syntax Test Results.sublime-syntax"))
+        settings.set("syntax", syntax)
 
         # Call create_output_panel a second time after assigning the above
         # settings, so that it'll be picked up as a result buffer
@@ -40,17 +45,19 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
             if is_syntax(relative_path):
                 tests = []
                 for t in sublime.find_resources("syntax_test*"):
-                    try:
-                        first_line = sublime.load_resource(t)[:1024].splitlines()[0]
-                    except:
+                    lines = sublime.load_binary_resource(t)[:2048].splitlines()
+                    if len(lines) == 0:
                         continue
+                    first_line = lines[0]
 
-                    match = re.match(r'^.*SYNTAX TEST (?:[\w-]+ )*\"(.*?)\"', first_line)
+                    match = re.match(rb'^.*SYNTAX TEST .*"(.*?)"', first_line)
                     if not match:
                         continue
 
                     syntax = match.group(1)
-                    if syntax == relative_path or syntax == file_name:
+                    if syntax == relative_path.encode(
+                        "utf-8"
+                    ) or syntax == file_name.encode("utf-8"):
                         tests.append(t)
             elif file_name.startswith("syntax_test"):
                 tests = [relative_path]
@@ -68,15 +75,18 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         total_assertions = 0
         failed_assertions = 0
 
-        pattern = re.compile(r'(.+):([^:]+):([^:]+): \[([^\]]+)\][^\[]+\[([^\]]+)\]')
-        repl = r'\1:\2:\3\n  ✓ \4\n  ! \5\n'
+        pattern = re.compile(r"(.+):([^:]+):([^:]+): \[([^\]]+)\][^\[]+\[([^\]]+)\]")
+        repl = r"\1:\2:\3\n  ✓ \4\n  ! \5\n"
 
         for t in tests:
             assertions, test_output_lines = sublime_api.run_syntax_test(t)
             total_assertions += assertions
             if len(test_output_lines) > 0:
                 failed_assertions += len(test_output_lines)
-                append(self.output_view, ''.join(pattern.sub(repl, line) for line in test_output_lines))
+                append(
+                    self.output_view,
+                    "".join(pattern.sub(repl, line) for line in test_output_lines),
+                )
 
         if failed_assertions > 0:
             message = "FAILED: {} of {} assertions in {} files failed\n"
@@ -307,11 +317,11 @@ def package_relative_path(view):
         # of the Packages repository.
         if relative_path:
             try:
-                loader_version = sublime.load_resource(relative_path)
+                loader_version = sublime.load_binary_resource(relative_path)
             except IOError:
                 relative_path = None
             else:
-                with open(path, "r", encoding="utf-8", newline="") as f:
+                with open(path, "rb") as f:
                     fs_version = f.read()
                 if fs_version != loader_version:
                     relative_path = None
