@@ -21,13 +21,13 @@ The package author tries his best to keep up to date with the ongoing developmen
 As this package is and will never be added to the official [packagecontrol.io](https://packagecontrol.io/) for official reasons, you need to add the following settings to your _User/Package Control.sublime-settings_ if you want Package Control to keep this package up to date for you.
 
 ```json
-"repositories":
-[
-    "https://github.com/deathaxe/sublime-commands"
-],
-"package_name_map":
 {
-    "sublime-commands": "Default"
+    "repositories": [
+        "https://github.com/deathaxe/sublime-commands"
+    ],
+    "package_name_map": {
+        "sublime-commands": "Default"
+    }
 }
 ```
 
