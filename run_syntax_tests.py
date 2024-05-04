@@ -72,6 +72,17 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
 
         show_panel_on_build(self.window)
 
+        def print_failure(begin, end):
+            if not begin or not end:
+                return
+
+            if int(end[3]) - int(begin[3]) > 0:
+                line = f"{begin[1]}:{begin[2]}:{begin[3]}-{end[3]}\n  ✓ {begin[4]}\n  ! {begin[5]}\n"
+            else:
+                line = f"{begin[1]}:{begin[2]}:{begin[3]}\n  ✓ {begin[4]}\n  ! {begin[5]}\n"
+
+            append(self.output_view, line)
+
         total_assertions = 0
         failed_assertions = 0
 
@@ -81,12 +92,31 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
         for t in tests:
             assertions, test_output_lines = sublime_api.run_syntax_test(t)
             total_assertions += assertions
-            if len(test_output_lines) > 0:
-                failed_assertions += len(test_output_lines)
-                append(
-                    self.output_view,
-                    "".join(pattern.sub(repl, line) for line in test_output_lines),
-                )
+            if not test_output_lines:
+                continue
+
+            begin = prev = None
+
+            failed_assertions += len(test_output_lines)
+            for line in test_output_lines:
+                match = pattern.match(line)
+                if not match:
+                    continue
+
+                if not begin:
+                    begin = prev = match
+                    continue
+
+                if all(match[i] == begin[i] for i in (1, 2, 4, 5)):
+                    prev = match
+                    continue
+
+                print_failure(begin, prev)
+                begin = prev = match
+
+            else:
+                # output final result
+                print_failure(begin, prev)
 
         if failed_assertions > 0:
             message = "FAILED: {} of {} assertions in {} files failed\n"

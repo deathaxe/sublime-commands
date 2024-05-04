@@ -47,12 +47,14 @@ contexts:
 
   location:
     - meta_content_scope: meta.path.filename.sublime.syntax-test-results entity.name.filename.sublime.syntax-test-results
-    - match: (:)(\d+)(:)(\d+)
+    - match: (:)(\d+)(:)(\d+)(?:(-)(\d+))?
       captures:
         1: meta.path.row.sublime.syntax-test-results punctuation.separator.row.sublime.syntax-test-results
         2: meta.path.row.sublime.syntax-test-results meta.number.integer.decimal.sublime.syntax-test-results constant.numeric.value.sublime.syntax-test-results
         3: meta.path.column.sublime.syntax-test-results punctuation.separator.column.sublime.syntax-test-results
-        4: meta.path.column.sublime.syntax-test-results meta.number.integer.decimal.sublime.syntax-test-results constant.numeric.value.sublime.syntax-test-results
+        4: meta.path.column.begin.sublime.syntax-test-results meta.number.integer.decimal.sublime.syntax-test-results constant.numeric.value.sublime.syntax-test-results
+        5: meta.path.column.sublime.syntax-test-results punctuation.separator.syntax-test-results
+        6: meta.path.column.end.sublime.syntax-test-results meta.number.integer.decimal.sublime.syntax-test-results constant.numeric.value.sublime.syntax-test-results
       pop: 1
     - match: /
       scope: punctuation.separator.path.sublime.syntax-test-results
