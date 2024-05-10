@@ -101,6 +101,8 @@ class RunSyntaxTestsCommand(sublime_plugin.WindowCommand):
             for line in test_output_lines:
                 match = pattern.match(line)
                 if not match:
+                    # print as is (indentation tests, symbol tests)
+                    append(self.output_view, line + "\n")
                     continue
 
                 if not begin:
