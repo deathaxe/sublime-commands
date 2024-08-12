@@ -1,6 +1,7 @@
 [
     { "command": "open_context_url" },
     { "command": "goto_definition", "caption": "Goto Definition" },
+    { "command": "goto_reference", "caption": "Goto Reference" },
     { "caption": "-", "id": "diff" },
     { "command": "toggle_inline_diff" },
     { "command": "revert_hunk", "caption": "Revert Diff Hunk" },
