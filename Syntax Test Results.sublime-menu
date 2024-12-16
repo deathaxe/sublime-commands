@@ -1,0 +1,12 @@
+[
+	{ "command": "open_context_url" },
+	{ "caption": "-" },
+	{ "command": "next_result" },
+	{ "command": "prev_result" },
+	{ "caption": "-" },
+	{ "command": "cut" },
+	{ "command": "copy" },
+	{ "command": "paste" },
+	{ "caption": "-" },
+	{ "command": "select_all" }
+]
