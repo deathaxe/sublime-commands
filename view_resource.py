@@ -12,7 +12,11 @@ class ResourceNameInputHandler(sublime_plugin.ListInputHandler):
 
     def list_items(self):
         settings = sublime.load_settings("Preferences.sublime-settings")
-        exclude = set(f + '/' for f in settings.get("folder_exclude_patterns", []))
+        exclude = settings.get("folder_exclude_patterns", [])
+        if not isinstance(exclude, list):
+            return
+
+        exclude = set(f + '/' for f in exclude if not f[-1:] != '/')
 
         PACKAGES = "Packages/"
         start = len(PACKAGES)
