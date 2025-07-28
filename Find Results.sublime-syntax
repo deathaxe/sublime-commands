@@ -17,9 +17,9 @@ contexts:
         1: constant.numeric.line-number.match.find-in-files
         2: punctuation.line-number.match.find-in-files
         3: match.find-in-files
-    - match: ^( +\.{2,10})$
+    - match: ^ +(\.{2,10})$
       captures:
-        1: constant.numeric.line-number.find-in-files
+        1: punctuation.section.block.find-in-files
     - match: ^Searching (\d+) file(?:s)? for (".+")(.+)?$
       scope: header.find-in-files
       captures:
