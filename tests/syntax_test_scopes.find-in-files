@@ -9,6 +9,24 @@ Searching 3840 files for "find_strintg"
 #                        ^ punctuation.definition.string.begin.find-in-files
 #                                     ^ punctuation.definition.string.end.find-in-files
 
+Searching 3840 files for ""find\_string""
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.header.find-in-files
+#         ^^^^ constant.numeric.total-files-count.find-in-files
+#                        ^^^^^^^^^^^^^^^^ meta.string.literal.query.find-in-files string.quoted.double.find-in-files
+#                        ^ punctuation.definition.string.begin.find-in-files
+#                         ^^^^^^^^^^^^^^ - constant - punctuation
+#                                       ^ punctuation.definition.string.end.find-in-files
+
+Searching 3840 files for ""find\_["']_" (regex)"" (regex)
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.header.find-in-files
+#         ^^^^ constant.numeric.total-files-count.find-in-files
+#                        ^^^^^^^^^^^^^^^^^^^^^^^^ meta.string.regexp.query.find-in-files string.quoted.double.find-in-files
+#                        ^ punctuation.definition.string.begin.find-in-files
+#                         ^ - constant - punctuation
+#                                     ^ - constant - punctuation
+#                                              ^ - constant - punctuation
+#                                               ^ punctuation.definition.string.end.find-in-files
+
 Searching 3840 files for "^find_[Pp]attern$" (regex, case insensitive)
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.header.find-in-files
 #         ^^^^ constant.numeric.total-files-count.find-in-files

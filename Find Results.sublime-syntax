@@ -70,7 +70,7 @@ contexts:
       embed_scope:
         meta.string.regexp.query.find-in-files
         string.quoted.double.find-in-files
-      escape: \"
+      escape: \"(?= \([^)]*\)\n|\n)
       escape_captures:
         0:
           meta.string.regexp.query.find-in-files
