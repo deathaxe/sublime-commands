@@ -27,6 +27,9 @@ Searching 3840 files for "^find_[Pp]attern$" (regex, case insensitive)
 
 ## footer tests
 
+Reached maximum result size. Check "find_in_files_max_result_size".
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ markup.warning.find-in-files
+
 0 matches
 # <- meta.footer.find-in-files constant.numeric.no-matches.find-in-files
 #^^^^^^^^^ meta.footer.find-in-files

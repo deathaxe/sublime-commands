@@ -47,7 +47,7 @@ contexts:
         1: constant.numeric.total-files-count.find-in-files
       push: find-pattern
     # footer
-    - match: ^(\d+) match(?:es)? (?:across|in) (\d+) files?\n
+    - match: ^(\d+) match(?:es)? (?:across|in) (\d+) files?$\n?
       scope: meta.footer.find-in-files
       captures:
         1: constant.numeric.matched-count.find-in-files
@@ -56,6 +56,8 @@ contexts:
       scope: meta.footer.find-in-files
       captures:
         1: constant.numeric.no-matches.find-in-files
+    - match: ^Reached maximum result size\..*
+      scope: markup.warning.find-in-files
 
   find-pattern:
     - meta_scope: meta.header.find-in-files
