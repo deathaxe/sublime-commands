@@ -36,7 +36,7 @@ contexts:
     - match: ^    (<binary>)
       captures:
         1: comment.other.binary.find-in-files
-    - match: (... )?<skipped \d+ characters?>( ...)?
+    - match: (\.\.\. )?<skipped \d+ characters?>( \.\.\.)?
       scope: comment.other.skipped.find-in-files
       captures:
         1: punctuation.separator.continuation.find-in-files
