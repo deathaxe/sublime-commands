@@ -2,39 +2,97 @@
 ---
 # http://www.sublimetext.com/docs/syntax.html
 name: Find Results
-hidden: true
 scope: text.find-in-files
+version: 2
+hidden: true
+
 contexts:
   main:
-    - match: ^([^ ].*:\n)$
+    # filename
+    - match: ^(\S.*)(:)\n
+      scope: meta.separator.find-in-files
       captures:
         1: entity.name.filename.find-in-files
-    - match: ^( +[0-9]+)
-      captures:
-        1: constant.numeric.line-number.find-in-files
-    - match: ^( +[0-9]+)(:)(.+\n)$
+        2: punctuation.separator.filename.find-in-files
+    # gutter with line numbers
+    - match: ^ +(\d+)(:)
+      scope: meta.gutter.find-in-files
       captures:
         1: constant.numeric.line-number.match.find-in-files
-        2: punctuation.line-number.match.find-in-files
-        3: match.find-in-files
-    - match: ^( +\.{2,10})$
+        2: punctuation.separator.line-number.find-in-files
+    - match: ^ +(\d+)[ \n]
+      scope: meta.gutter.find-in-files
       captures:
         1: constant.numeric.line-number.find-in-files
-    - match: ^Searching (\d+) file(?:s)? for (".+")(.+)?$
-      scope: header.find-in-files
+    - match: ^ +(\.+)[ \n]
+      scope: meta.gutter.find-in-files
       captures:
-        1: variable.total_files_count.find-in-files
-        2: string.query.find-in-files
-    - match: ^(\d+) match(?:es)? (?:across|in) (\d+) file(?:s)?\n
-      scope: footer.find-in-files
+        1: punctuation.separator.continuation.find-in-files
+    # content
+    - match: ^    (ERROR(:))
       captures:
-        1: variable.matched_count.find-in-files
-        2: variable.matched_files_count.find-in-files
-        3: sep.find-in-files
-    - match: ^(0) matches\n
-      scope: footer.find-in-files
+        1: markup.error.find-in-files
+        2: punctuation.separator.error.find-in-files
+    - match: ^    (<binary>)
       captures:
-        1: variable.no_matches.find-in-files
-    - match: ^(0) matches
+        1: comment.other.binary.find-in-files
+    - match: (... )?<skipped \d+ characters?>( ...)?
+      scope: comment.other.skipped.find-in-files
       captures:
-        1: variable.no_matches.find-in-files
+        1: punctuation.separator.continuation.find-in-files
+        2: punctuation.separator.continuation.find-in-files
+    # header
+    - match: ^Searching (\d+) files? for[ ]
+      captures:
+        1: constant.numeric.total-files-count.find-in-files
+      push: find-pattern
+    # footer
+    - match: ^(\d+) match(?:es)? (?:across|in) (\d+) files?\n
+      scope: meta.footer.find-in-files
+      captures:
+        1: constant.numeric.matched-count.find-in-files
+        2: constant.numeric.matched-files-count.find-in-files
+    - match: ^(0) matches$\n?
+      scope: meta.footer.find-in-files
+      captures:
+        1: constant.numeric.no-matches.find-in-files
+
+  find-pattern:
+    - meta_scope: meta.header.find-in-files
+    - match: \"(?=.*\"\s+\([^)]*\bregex\b)
+      scope:
+        meta.string.regexp.query.find-in-files
+        string.quoted.double.find-in-files
+        punctuation.definition.string.begin.find-in-files
+      embed: scope:source.regexp
+      embed_scope:
+        meta.string.regexp.query.find-in-files
+        string.quoted.double.find-in-files
+      escape: \"
+      escape_captures:
+        0:
+          meta.string.regexp.query.find-in-files
+          string.quoted.double.find-in-files
+          punctuation.definition.string.end.find-in-files
+    - match: (").*(")
+      scope: meta.string.literal.query.find-in-files string.quoted.double.find-in-files
+      captures:
+        1: punctuation.definition.string.begin.find-in-files
+        2: punctuation.definition.string.end.find-in-files
+    - match: \(
+      scope: punctuation.section.sequence.begin.find-in-files
+      push: find-modifier-list-body
+    - match: \n
+      pop: 1
+
+  find-modifier-list-body:
+    - meta_scope: meta.sequence.list.find-in-files
+    - match: \)
+      scope: punctuation.section.sequence.end.find-in-files
+      pop: 1
+    - match: \n
+      pop: 2
+    - match: ','
+      scope: punctuation.separator.sequence.find-in-files
+    - match: '\w+(?: \w+)?'
+      scope: storage.modifier.find-in-files

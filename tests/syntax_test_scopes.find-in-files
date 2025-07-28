@@ -1,0 +1,82 @@
+# SYNTAX TEST "Packages/Default/Find Results.sublime-syntax"
+
+## header tests
+
+Searching 3840 files for "find_strintg"
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.header.find-in-files
+#         ^^^^ constant.numeric.total-files-count.find-in-files
+#                        ^^^^^^^^^^^^^^ meta.string.literal.query.find-in-files string.quoted.double.find-in-files
+#                        ^ punctuation.definition.string.begin.find-in-files
+#                                     ^ punctuation.definition.string.end.find-in-files
+
+Searching 3840 files for "^find_[Pp]attern$" (regex, case insensitive)
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.header.find-in-files
+#         ^^^^ constant.numeric.total-files-count.find-in-files
+#                        ^^^^^^^^^^^^^^^^^^^ meta.string.regexp.query.find-in-files string.quoted.double.find-in-files
+#                        ^ punctuation.definition.string.begin.find-in-files
+#                         ^ keyword.control.anchor.regexp
+#                               ^^^^ meta.set.regexp
+#                                         ^ keyword.control.anchor.regexp
+#                                          ^ punctuation.definition.string.end.find-in-files
+#                                            ^^^^^^^^^^^^^^^^^^^^^^^^^ meta.sequence.list.find-in-files
+#                                            ^ punctuation.section.sequence.begin.find-in-files
+#                                             ^^^^^ storage.modifier.find-in-files
+#                                                  ^ punctuation.separator.sequence.find-in-files
+#                                                    ^^^^^^^^^^^^^^^^ storage.modifier.find-in-files
+#                                                                    ^ punctuation.section.sequence.end.find-in-files
+
+## footer tests
+
+0 matches
+# <- meta.footer.find-in-files constant.numeric.no-matches.find-in-files
+#^^^^^^^^^ meta.footer.find-in-files
+
+116 matches across 10 files
+# <- meta.footer.find-in-files constant.numeric.matched-count.find-in-files
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.footer.find-in-files
+#^^ constant.numeric.matched-count.find-in-files
+#                  ^^ constant.numeric.matched-files-count.find-in-files
+
+## content tests
+
+C:\Program Files\Sublime Text\changelog.txt:
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.separator.find-in-files
+#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ entity.name.filename.find-in-files
+#                                          ^ punctuation.separator.filename.find-in-files
+    <binary>
+#   ^^^^^^^^ comment.other.binary.find-in-files
+
+C:\Program Files\Sublime Text\changelog.txt:
+    ERROR: Unable to open file
+#   ^^^^^^ markup.error.find-in-files
+
+C:\Program Files\Sublime Text\changelog.txt:
+  336:  //    group
+#^^^^^ meta.gutter.find-in-files
+# ^^^ constant.numeric.line-number.match.find-in-files
+#    ^ punctuation.separator.line-number.find-in-files
+#     ^^^^^^^^^^^^^^ - meta - constant - punctuation
+  571
+  ...
+# <- meta.gutter.find-in-files - constant
+#^^^^^ meta.gutter.find-in-files
+#^ - constant
+# ^^^ punctuation.separator.continuation.find-in-files
+#    ^ - constant
+  872  anything
+# <- meta.gutter.find-in-files - constant
+#^^^^^ meta.gutter.find-in-files
+#^ - constant
+# ^^^ constant.numeric.line-number.find-in-files
+#    ^ - constant
+#     ^^^^^^^^^^^^^^ - meta - constant - punctuation
+
+  874: <skipped 71298 characters> ...anything interesting ... <skipped 20204 characters> ...
+#^^^^^ meta.gutter.find-in-files
+# ^^^ constant.numeric.line-number.match.find-in-files
+#    ^ punctuation.separator.line-number.find-in-files
+#     ^ - meta - comment - constant - punctuation
+#      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.other.skipped.find-in-files - meta
+#                                    ^^^^^^^^^^^^^^^^^^^^^ - meta - comment
+#                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ comment.other.skipped.find-in-files - meta
+#                                                                                           ^ - meta - comment
