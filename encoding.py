@@ -19,6 +19,18 @@ class EncodingInputHandler(sublime_plugin.ListInputHandler):
         ]
 
 
+class SaveWithEncodingInputHandler(EncodingInputHandler):
+
+    def list_items(self):
+        return [
+            "utf-8 with bom",
+            "utf-16 le",
+            "utf-16 le with bom",
+            "utf-16 be",
+            "utf-16 be with bom",
+        ] + super().list_items()
+
+
 class ReopenEncodingCommand(sublime_plugin.WindowCommand):
 
     def input_description(self):
@@ -40,7 +52,7 @@ class SaveEncodingCommand(sublime_plugin.WindowCommand):
 
     def input(self, args):
         if "encoding" not in args:
-            return EncodingInputHandler()
+            return SaveWithEncodingInputHandler()
         return None
 
     def run(self, encoding):
