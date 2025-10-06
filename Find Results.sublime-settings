@@ -1,6 +1,16 @@
 {
+    "auto_complete": false,
+    "auto_complete_disabled": true,
     "context_menu": "Find Results Context.sublime-menu",
+    "detect_indentation": false,
     "draw_indent_guides": false,
     "draw_white_space": "none",
+    "is_widget": true,
+    "line_numbers": false,
+    "mini_diff": false,
     "rulers": [],
+    "spell_check": false,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": false,
+    "word_wrap": true
 }
