@@ -1,0 +1,10 @@
+[
+	{ "command": "open_context_url" },
+	{ "caption": "-", "id": "clipboard" },
+	{ "command": "cut" },
+	{ "command": "copy" },
+	{ "command": "paste" },
+	{ "caption": "-", "id": "selection" },
+	{ "command": "select_all" },
+	{ "caption": "-", "id": "end" }
+]
