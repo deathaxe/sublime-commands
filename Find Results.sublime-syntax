@@ -8,6 +8,9 @@ hidden: true
 
 contexts:
   main:
+    # Apply `source` scope as hack to workaround
+    # issue https://github.com/sublimehq/sublime_text/issues/2356
+    - meta_scope: source.find-in-files
     # filename
     - match: ^(\S.*)(:)\n
       scope: meta.separator.find-in-files
