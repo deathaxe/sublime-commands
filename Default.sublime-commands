@@ -13,6 +13,7 @@
     { "caption": "File: Reopen File as Text", "command": "force_reopen_as", "args": {"type": "text"},  },
     { "caption": "File: Open Containing Folder…", "command": "open_dir", "args": {"dir": "$file_path", "file": "$file_name"} },
     { "caption": "File: Open in Browser", "command": "open_in_browser" },
+    { "caption": "File: Open Terminal Here…", "command": "open_terminal", "args": {"dir": "$file_path"} },
 
     // File Menu -> Save
     { "caption": "File: Save", "command": "save", "args": { "async": true } },
