@@ -106,6 +106,12 @@
 		"command": "open_dir",
 		"args": {"dir": "$file_path", "file": "$file_name"}
 	},
+	{
+		"caption": "Open Terminal Here…",
+		"mnemonic": "T",
+		"command": "open_terminal",
+		"args": {"dir": "$file_path"}
+	},
 
 	{ "caption": "-", "id": "repo_commands" },
 	{
