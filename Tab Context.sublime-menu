@@ -96,6 +96,11 @@
 		"command": "reveal_in_side_bar"
 	},
 	{
+		"caption": "Reopen File as Image",
+		"command": "force_reopen_as",
+		"args": {"type": "image"}
+	},
+	{
 		"caption": "Open in Browser",
 		"mnemonic": "B",
 		"command": "open_in_browser"
