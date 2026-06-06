@@ -79,10 +79,12 @@ class AsyncProcess:
                 # "C:\\new\\path;$PATH"
                 os.environ["PATH"] = os.path.expandvars(path)
 
-            proc_env = os.environ.copy()
-            proc_env.update(env)
-            for k, v in proc_env.items():
-                proc_env[k] = os.path.expandvars(v)
+            if env:
+                proc_env = os.environ.copy()
+                for k, v in env.items():
+                    proc_env[k] = os.path.expandvars(v)
+            else:
+                proc_env = None
 
             if sys.platform == "win32":
                 preexec_fn = None
