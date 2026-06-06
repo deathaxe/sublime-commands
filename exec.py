@@ -13,6 +13,8 @@ from typing import cast
 import sublime
 import sublime_plugin
 
+__all__ = ["ExecCommand", "ExecEventListener"]
+
 ANNOTATION_TEMPLATE = """
 <body>
   <style>
