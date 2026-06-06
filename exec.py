@@ -466,14 +466,14 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
     def hide_annotations(self):
         for window in sublime.windows():
-            for file, errs in self.errs_by_file.items():
-                view = window.find_open_file(file)
-                if view:
-                    view.erase_regions("exec")
-                    view.hide_popup()
+            for file in self.errs_by_file:
+                if view := window.find_open_file(file):
+                    for clone in (view, *view.clones()):
+                        if clone.window() == window:
+                            clone.erase_regions("exec")
+                            clone.hide_popup()
 
-        view = sublime.active_window().active_view()
-        if view:
+        if view := sublime.active_window().active_view():
             view.erase_regions("exec")
             view.hide_popup()
 
