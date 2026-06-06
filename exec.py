@@ -1,12 +1,12 @@
+import codecs
+import html
 import os
+import queue
+import signal
 import subprocess
 import sys
 import threading
 import time
-import codecs
-import signal
-import html
-import queue
 
 from typing import cast
 
