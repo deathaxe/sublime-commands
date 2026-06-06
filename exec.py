@@ -64,12 +64,6 @@ class AsyncProcess:
 
         self.start_time = time.time()
 
-        # Hide the console window on Windows
-        startupinfo = None
-        if os.name == "nt":
-            startupinfo = subprocess.STARTUPINFO()
-            startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-
         try:
             # Set temporary PATH to locate executable in cmd
             if path:
@@ -115,7 +109,6 @@ class AsyncProcess:
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 stdin=subprocess.PIPE,
-                startupinfo=startupinfo,
                 env=proc_env,
                 preexec_fn=preexec_fn,
                 shell=shell)
@@ -156,11 +149,7 @@ class AsyncProcess:
             if sys.platform == "win32":
                 # terminate would not kill process opened by the shell cmd.exe,
                 # it will only kill cmd.exe leaving the child running
-                startupinfo = subprocess.STARTUPINFO()
-                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
-                subprocess.Popen(
-                    f"taskkill /PID {self.proc.pid} /T /F",
-                    startupinfo=startupinfo)
+                subprocess.Popen(f"taskkill /PID {self.proc.pid} /T /F", shell=True)
             else:
                 os.killpg(self.proc.pid, signal.SIGTERM)
                 self.proc.terminate()
