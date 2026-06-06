@@ -193,8 +193,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
         self.errs_by_file = {}
         self.show_errors_inline = True
-        self.input_view = None
-        self.output_view = None
+        self.input_view = sublime.View(0)
+        self.output_view = sublime.View(0)
         self.input_queue = None
 
     def run(
@@ -244,24 +244,33 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         if working_dir:
             os.chdir(working_dir)
 
-        self.output_view, self.input_view = self.window.find_io_panel("exec")
-        if self.output_view is None:
-            # Try not to call get_output_panel until the regexes are assigned
-            self.output_view, self.input_view = self.window.create_io_panel(
-                "exec", self.on_input if interactive else None)
+        # Prepare output panel
 
-        self.output_view.settings().set("result_file_regex", file_regex)
-        self.output_view.settings().set("result_line_regex", line_regex)
-        self.output_view.settings().set("result_base_dir", working_dir)
-        self.output_view.settings().set("word_wrap", word_wrap)
-        self.output_view.settings().set("line_numbers", False)
-        self.output_view.settings().set("gutter", False)
-        self.output_view.settings().set("scroll_past_end", False)
-        self.output_view.assign_syntax(syntax)
+        self.output_view, self.input_view = self.window.create_io_panel(
+            "exec", self.on_input if interactive else None)
 
-        # Call create_output_panel a second time after assigning the above
-        # settings, so that it'll be picked up as a result buffer
-        self.window.create_io_panel("exec", self.on_input if interactive else None)
+        output_settings = self.output_view.settings()
+        build_settings = {
+            "result_base_dir": working_dir,
+            "result_file_regex": file_regex,
+            "result_line_regex": line_regex,
+            "word_wrap": word_wrap,
+            "syntax": syntax,
+        }
+
+        # Treat output as widget. Maybe also "Build Output Widget.sublime-settings"?
+        for k, v in sublime.load_settings("Widget.sublime-settings").to_dict().items():
+            if k not in build_settings:
+                output_settings.set(k, v)
+
+        for k, v in build_settings.items():
+            output_settings.set(k, v)
+
+        self.output_view.set_read_only(True)
+
+        preferences_settings = sublime.load_settings("Preferences.sublime-settings")
+        if preferences_settings.get("show_panel_on_build", True):
+            self.window.run_command("show_panel", {"panel": "output.exec"})
 
         self.encoding = encoding
         self.quiet = quiet
@@ -274,12 +283,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                 print("Running " + cmd if isinstance(cmd, str) else " ".join(cmd))
             sublime.status_message("Building")
 
-        preferences_settings = \
-            sublime.load_settings("Preferences.sublime-settings")
-        show_panel_on_build = \
-            preferences_settings.get("show_panel_on_build", True)
-        if show_panel_on_build:
-            self.window.run_command("show_panel", {"panel": "output.exec"})
+        # Prepare annotations
 
         self.hide_annotations()
         self.show_errors_inline = \
