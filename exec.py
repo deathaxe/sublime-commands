@@ -190,14 +190,16 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
     def __init__(self, window):
         super().__init__(window)
-
         self.proc = None
-
+        self.debug_text = ""
+        self.encoding = "utf-8"
+        self.quiet = False
         self.errs_by_file = {}
         self.show_errors_inline = True
-        self.input_view = sublime.View(0)
-        self.output_view = sublime.View(0)
         self.input_queue = None
+        self.input_view = sublime.View(0)
+        self.output_size = 0
+        self.output_view = sublime.View(0)
 
     def run(
             self,
