@@ -11,6 +11,28 @@ import queue
 import sublime
 import sublime_plugin
 
+ANNOTATION_TEMPLATE = """
+<body>
+  <style>
+    #annotation-error {{
+      background-color: color(var(--background) blend(#fff 95%));
+    }}
+    html.dark #annotation-error {{
+      background-color: color(var(--background) blend(#fff 95%));
+    }}
+    html.light #annotation-error {{
+      background-color: color(var(--background) blend(#000 85%));
+    }}
+    a {{
+      text-decoration: inherit;
+    }}
+  </style>
+  <div class="error" id=annotation-error>
+    <span class="content">{content}</span>
+  </div>
+</body>
+"""
+
 
 class ProcessListener:
     def on_data(self, proc, data):
@@ -403,23 +425,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                                        len(errs))
 
     def update_annotations(self):
-        stylesheet = '''
-            <style>
-                #annotation-error {
-                    background-color: color(var(--background) blend(#fff 95%));
-                }
-                html.dark #annotation-error {
-                    background-color: color(var(--background) blend(#fff 95%));
-                }
-                html.light #annotation-error {
-                    background-color: color(var(--background) blend(#000 85%));
-                }
-                a {
-                    text-decoration: inherit;
-                }
-            </style>
-        '''
-
         for window in sublime.windows():
             for file, errs in self.errs_by_file.items():
                 if view := window.find_open_file(file):
@@ -448,12 +453,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                             line_err_set.append(
                                 [line, html.escape(text, quote=False)])
 
-                    for text in line_err_set:
-                        content_set.append(
-                            '<body>' + stylesheet +
-                            '<div class="error" id=annotation-error>' +
-                            '<span class="content">' + text[1] + '</span></div>' +
-                            '</body>')
+                    for _, text in line_err_set:
+                        content_set.append(ANNOTATION_TEMPLATE.format(content=text))
 
                     # add annotations to all clones in current window
                     for clone in (view, *view.clones()):
