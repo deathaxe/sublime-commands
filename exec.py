@@ -337,30 +337,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         else:
             return True
 
-    def write(self, characters):
-        self.output_view.run_command(
-            'append',
-            {'characters': characters, 'force': True, 'scroll_to_end': True})
-
-        # Updating annotations is expensive, so batch it to the main thread
-        def annotations_check():
-            errs = self.output_view.find_all_results_with_text()
-            errs_by_file = {}
-            for file, line, column, text in errs:
-                if file not in errs_by_file:
-                    errs_by_file[file] = []
-                errs_by_file[file].append((line, column, text))
-            self.errs_by_file = errs_by_file
-
-            self.update_annotations()
-
-            self.should_update_annotations = False
-
-        if not self.should_update_annotations:
-            if self.show_errors_inline and characters.find('\n') >= 0:
-                self.should_update_annotations = True
-                sublime.set_timeout(lambda: annotations_check())
-
     def on_input(self, text):
         if not self.input_view:
             return
@@ -422,6 +398,30 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             else:
                 sublime.status_message("Build finished with %d errors" %
                                        len(errs))
+
+    def write(self, characters):
+        self.output_view.run_command(
+            'append',
+            {'characters': characters, 'force': True, 'scroll_to_end': True})
+
+        # Updating annotations is expensive, so batch it to the main thread
+        def annotations_check():
+            errs = self.output_view.find_all_results_with_text()
+            errs_by_file = {}
+            for file, line, column, text in errs:
+                if file not in errs_by_file:
+                    errs_by_file[file] = []
+                errs_by_file[file].append((line, column, text))
+            self.errs_by_file = errs_by_file
+
+            self.update_annotations()
+
+            self.should_update_annotations = False
+
+        if not self.should_update_annotations:
+            if self.show_errors_inline and characters.find('\n') >= 0:
+                self.should_update_annotations = True
+                sublime.set_timeout(lambda: annotations_check())
 
     def update_annotations(self):
         for window in sublime.windows():
