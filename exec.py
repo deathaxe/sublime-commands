@@ -230,18 +230,25 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         if kill_previous and self.proc and self.proc.poll():
             self.proc.kill()
 
+        # Default the to the current files directory if no working directory
+        # was given
+        if (
+            not working_dir
+            and (view := self.window.active_view())
+            and (file_name := view.file_name())
+        ):
+            working_dir = os.path.dirname(file_name)
+
+        # Change to the working dir, rather than spawning the process with it,
+        # so that emitted working dir relative path names make sense
+        if working_dir:
+            os.chdir(working_dir)
+
         self.output_view, self.input_view = self.window.find_io_panel("exec")
         if self.output_view is None:
             # Try not to call get_output_panel until the regexes are assigned
             self.output_view, self.input_view = self.window.create_io_panel(
                 "exec", self.on_input if interactive else None)
-
-        # Default the to the current files directory if no working directory
-        # was given
-        if (working_dir == "" and
-                self.window.active_view() and
-                self.window.active_view().file_name()):
-            working_dir = os.path.dirname(self.window.active_view().file_name())
 
         self.output_view.settings().set("result_file_regex", file_regex)
         self.output_view.settings().set("result_line_regex", line_regex)
@@ -288,11 +295,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             user_env = self.window.active_view().settings().get('build_env')
             if user_env:
                 merged_env.update(user_env)
-
-        # Change to the working dir, rather than spawning the process with it,
-        # so that emitted working dir relative path names make sense
-        if working_dir != "":
-            os.chdir(working_dir)
 
         self.debug_text = ""
         if shell_cmd:
