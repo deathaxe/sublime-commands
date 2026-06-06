@@ -403,22 +403,21 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             'append',
             {'characters': characters, 'force': True, 'scroll_to_end': True})
 
-        # Updating annotations is expensive, so batch it to the main thread
-        def annotations_check():
-            errs = self.output_view.find_all_results_with_text()
-            errs_by_file = {}
-            for file, line, column, text in errs:
-                if file not in errs_by_file:
-                    errs_by_file[file] = []
-                errs_by_file[file].append((line, column, text))
-            self.errs_by_file = errs_by_file
+        if (
+            not self.updating_annotations
+            and self.show_errors_inline
+            and '\n' in characters
+        ):
+            self.updating_annotations = True
+            sublime.set_timeout(self.check_annotations)
 
-            self.update_annotations()
+    def check_annotations(self):
+        errs_by_file = {}
+        for file, line, column, text in self.output_view.find_all_results_with_text():
+            errs_by_file.setdefault(file, []).append((line, column, text))
+        self.errs_by_file = errs_by_file
 
-        if not self.updating_annotations:
-            if self.show_errors_inline and characters.find('\n') >= 0:
-                self.updating_annotations = True
-                sublime.set_timeout(lambda: annotations_check())
+        self.update_annotations()
 
     def update_annotations(self):
         for window in sublime.windows():
