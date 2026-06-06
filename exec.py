@@ -321,9 +321,10 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                 self.input_queue = None
 
         except Exception as e:
-            self.write(f"{e!s}\n{self.debug_text}\n")
+            msg = f"{e!s}\n{self.debug_text}\n"
             if not self.quiet:
-                self.write("[Aborted]")
+                msg += "[Aborted]"
+            self.write_on_new_line(msg)
 
         if interactive:
             self.window.focus_view(self.input_view)
@@ -353,7 +354,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.output_size += len(data)
 
         if self.output_size >= self.OUTPUT_LIMIT:
-            self.write("\n[Output Truncated]\n")
+            self.write_on_new_line("[Output Truncated]\n")
 
     def on_finished(self, proc):
         if proc != self.proc:
@@ -365,7 +366,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             self.input_queue = None
 
         if proc.killed:
-            self.write("\n[Cancelled]")
+            self.write_on_new_line("[Cancelled]")
         elif not self.quiet:
             if (elapsed := time.time() - proc.start_time) < 1:
                 msg = f"Finished in {elapsed * 1000:.0f}ms"
@@ -377,7 +378,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             else:
                 msg = f"[{msg}]"
 
-            self.write(msg)
+            self.write_on_new_line(msg)
 
         if proc.killed:
             sublime.status_message("Build cancelled")
@@ -387,6 +388,12 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             sublime.status_message("Build finished")
 
         self.proc = None
+
+    def write_on_new_line(self, characters):
+        size = self.output_view.size()
+        if size > 0 and self.output_view.substr(size - 1) != '\n':
+            characters = "\n" + characters
+        self.write(characters)
 
     def write(self, characters):
         self.output_view.run_command(
