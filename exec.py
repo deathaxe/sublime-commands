@@ -309,7 +309,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             self.debug_text += "[path: " + str(os.environ["PATH"]) + "]"
 
         self.output_size = 0
-        self.should_update_annotations = False
 
         try:
             # Forward kwargs to AsyncProcess
@@ -416,11 +415,9 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
             self.update_annotations()
 
-            self.should_update_annotations = False
-
-        if not self.should_update_annotations:
+        if not self.updating_annotations:
             if self.show_errors_inline and characters.find('\n') >= 0:
-                self.should_update_annotations = True
+                self.updating_annotations = True
                 sublime.set_timeout(lambda: annotations_check())
 
     def update_annotations(self):
@@ -471,6 +468,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                                 on_close=self.hide_annotations,
                             )
 
+        self.updating_annotations = False
+
     def hide_annotations(self):
         for window in sublime.windows():
             for file in self.errs_by_file:
@@ -486,6 +485,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
         self.errs_by_file = {}
         self.show_errors_inline = False
+        self.updating_annotations = False
 
 
 class ExecEventListener(sublime_plugin.EventListener):
