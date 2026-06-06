@@ -229,7 +229,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                 self.proc.kill()
             return
 
-        if kill_previous and self.proc and self.proc.poll():
+        if kill_previous and self.proc:
             self.proc.kill()
 
         # Prepare build environment
@@ -289,7 +289,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.encoding = encoding
         self.quiet = quiet
 
-        self.proc = None
         if not self.quiet:
             if shell_cmd:
                 print("Running " + shell_cmd)
@@ -337,16 +336,10 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             self.window.focus_view(self.input_view)
 
     def is_enabled(self, kill=False, **kwargs):
-        if kill:
-            return (self.proc is not None) and self.proc.poll()
-        else:
-            return True
+        return kill is False or self.proc is not None
 
     def on_input(self, text):
-        if not self.input_view:
-            return
-
-        if not self.proc.poll():
+        if not self.input_queue or not self.proc:
             return
 
         if text[-1] != '\n':
@@ -399,6 +392,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             sublime.status_message(f"Build finished with {len(errs)} errors")
         else:
             sublime.status_message("Build finished")
+
+        self.proc = None
 
     def write(self, characters):
         self.output_view.run_command(
