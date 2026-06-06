@@ -155,7 +155,7 @@ class AsyncProcess:
                 startupinfo = subprocess.STARTUPINFO()
                 startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
                 subprocess.Popen(
-                    "taskkill /PID %d /T /F" % self.proc.pid,
+                    f"taskkill /PID {self.proc.pid} /T /F",
                     startupinfo=startupinfo)
             else:
                 os.killpg(self.proc.pid, signal.SIGTERM)
@@ -264,10 +264,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             if shell_cmd:
                 print("Running " + shell_cmd)
             elif cmd:
-                cmd_string = cmd
-                if not isinstance(cmd, str):
-                    cmd_string = " ".join(cmd)
-                print("Running " + cmd_string)
+                print("Running " + cmd if isinstance(cmd, str) else " ".join(cmd))
             sublime.status_message("Building")
 
         preferences_settings = \
@@ -299,14 +296,14 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
         self.debug_text = ""
         if shell_cmd:
-            self.debug_text += "[shell_cmd: " + shell_cmd + "]\n"
+            self.debug_text += f"[shell_cmd: {shell_cmd}]\n"
         else:
-            self.debug_text += "[cmd: " + str(cmd) + "]\n"
-        self.debug_text += "[dir: " + str(os.getcwd()) + "]\n"
+            self.debug_text += f"[cmd: {cmd!s}]\n"
+        self.debug_text += f"[dir: {os.getcwd()}]\n"
         if "PATH" in merged_env:
-            self.debug_text += "[path: " + str(os.path.expandvars(merged_env["PATH"])) + "]"
+            self.debug_text += f"[path: {os.path.expandvars(merged_env["PATH"])}]"
         else:
-            self.debug_text += "[path: " + str(os.environ["PATH"]) + "]"
+            self.debug_text += f"[path: {os.environ["PATH"]}]"
 
         self.output_size = 0
 
@@ -322,10 +319,9 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                 self.input_queue = None
 
         except Exception as e:
-            self.write(str(e) + "\n")
-            self.write(self.debug_text + "\n")
+            self.write(f"{e!s}\n{self.debug_text}\n")
             if not self.quiet:
-                self.write("[Finished]")
+                self.write("[Aborted]")
 
         if interactive:
             self.window.focus_view(self.input_view)
