@@ -52,7 +52,7 @@ class AsyncProcess:
     ProcessListener (on a separate thread)
     """
 
-    def __init__(self, cmd, shell_cmd, env, listener, path="", shell=False):
+    def __init__(self, cmd, shell_cmd, env, listener, shell=False):
         """ "path" and "shell" are options in build systems"""
 
         if not shell_cmd and not cmd:
@@ -66,14 +66,16 @@ class AsyncProcess:
 
         self.start_time = time.time()
 
+        old_path = None
+
         try:
             # Set temporary PATH to locate executable in cmd
-            if path:
+            if "PATH" in env:
                 old_path = os.environ["PATH"]
                 # The user decides in the build system whether he wants to append
                 # $PATH or tuck it at the front: "$PATH;C:\\new\\path",
                 # "C:\\new\\path;$PATH"
-                os.environ["PATH"] = os.path.expandvars(path)
+                os.environ["PATH"] = os.path.expandvars(env["PATH"])
 
             if env:
                 proc_env = os.environ.copy()
@@ -119,7 +121,7 @@ class AsyncProcess:
         finally:
             # Make sure this is always run, otherwise we're leaving the PATH set
             # permanently
-            if path:
+            if old_path is not None:
                 os.environ["PATH"] = old_path
 
         self.stdout_thread = threading.Thread(
@@ -314,7 +316,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.output_size = 0
 
         try:
-            self.proc = AsyncProcess(cmd, shell_cmd, merged_env, self, path, **kwargs)
+            self.proc = AsyncProcess(cmd, shell_cmd, merged_env, self, **kwargs)
             self.proc.start()
 
             if interactive:
