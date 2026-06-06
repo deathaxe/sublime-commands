@@ -51,7 +51,7 @@ class AsyncProcess:
     """
 
     def __init__(self, cmd, shell_cmd, env, listener, path="", shell=False):
-        """ "path" and "shell" are options in build systems """
+        """ "path" and "shell" are options in build systems"""
 
         if not shell_cmd and not cmd:
             raise ValueError("shell_cmd or cmd is required")
@@ -111,7 +111,8 @@ class AsyncProcess:
                 stdin=subprocess.PIPE,
                 env=proc_env,
                 preexec_fn=preexec_fn,
-                shell=shell)
+                shell=shell,
+            )
 
         finally:
             # Make sure this is always run, otherwise we're leaving the PATH set
@@ -120,8 +121,7 @@ class AsyncProcess:
                 os.environ["PATH"] = old_path
 
         self.stdout_thread = threading.Thread(
-            target=self.read_fileno,
-            args=(self.proc.stdout, True)
+            target=self.read_fileno, args=(self.proc.stdout, True)
         )
 
     def start(self):
@@ -161,12 +161,11 @@ class AsyncProcess:
         return self.proc.poll()
 
     def read_fileno(self, file, execute_finished):
-        decoder = \
-            codecs.getincrementaldecoder(self.listener.encoding)('replace')
+        decoder = codecs.getincrementaldecoder(self.listener.encoding)("replace")
 
         while True:
             data = decoder.decode(file.read(2**16))
-            data = data.replace('\r\n', '\n').replace('\r', '\n')
+            data = data.replace("\r\n", "\n").replace("\r", "\n")
 
             if len(data) > 0 and not self.killed:
                 self.listener.on_data(self, data)
@@ -177,7 +176,7 @@ class AsyncProcess:
 
 
 class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
-    OUTPUT_LIMIT = 2 ** 27
+    OUTPUT_LIMIT = 2**27
 
     def __init__(self, window):
         super().__init__(window)
@@ -193,25 +192,25 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.output_view = sublime.View(0)
 
     def run(
-            self,
-            cmd=None,
-            shell_cmd=None,
-            file_regex="",
-            line_regex="",
-            working_dir="",
-            encoding="utf-8",
-            env={},
-            quiet=False,
-            kill=False,
-            kill_previous=False,
-            update_annotations_only=False,
-            word_wrap=True,
-            interactive=False,
-            syntax="Packages/Text/Plain text.tmLanguage",
-            path="",
-            # Catches "shell"
-            **kwargs):
-
+        self,
+        cmd=None,
+        shell_cmd=None,
+        file_regex="",
+        line_regex="",
+        working_dir="",
+        encoding="utf-8",
+        env={},
+        quiet=False,
+        kill=False,
+        kill_previous=False,
+        update_annotations_only=False,
+        word_wrap=True,
+        interactive=False,
+        syntax="Packages/Text/Plain text.tmLanguage",
+        path="",
+        # Catches "shell"
+        **kwargs,
+    ):
         if update_annotations_only:
             if self.show_errors_inline:
                 self.update_annotations()
@@ -254,7 +253,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         # Prepare output panel
 
         self.output_view, self.input_view = self.window.create_io_panel(
-            "exec", self.on_input if interactive else None)
+            "exec", self.on_input if interactive else None
+        )
 
         output_settings = self.output_view.settings()
         build_settings = {
@@ -335,8 +335,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         if not self.input_queue or not self.proc:
             return
 
-        if text[-1] != '\n':
-            text += '\n'
+        if text[-1] != "\n":
+            text += "\n"
 
         self.write(text)
         self.input_queue.put(text.encode(self.encoding))
@@ -353,7 +353,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.output_size += len(data)
 
         if self.output_size >= self.OUTPUT_LIMIT:
-            self.write('\n[Output Truncated]\n')
+            self.write("\n[Output Truncated]\n")
 
     def on_finished(self, proc):
         if proc != self.proc:
@@ -390,14 +390,10 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
     def write(self, characters):
         self.output_view.run_command(
-            'append',
-            {'characters': characters, 'force': True, 'scroll_to_end': True})
+            "append", {"characters": characters, "force": True, "scroll_to_end": True}
+        )
 
-        if (
-            not self.updating_annotations
-            and self.show_errors_inline
-            and '\n' in characters
-        ):
+        if not self.updating_annotations and self.show_errors_inline and "\n" in characters:
             self.updating_annotations = True
             sublime.set_timeout(self.check_annotations)
 
@@ -420,23 +416,20 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
                     for line, column, text in errs:
                         pt = view.text_point(line - 1, column - 1)
-                        if (line_err_set and
-                                line == line_err_set[len(line_err_set) - 1][0]):
-                            line_err_set[len(line_err_set) - 1][1] += (
-                                "<br>" + html.escape(text, quote=False))
+                        if line_err_set and line == line_err_set[len(line_err_set) - 1][0]:
+                            line_err_set[len(line_err_set) - 1][1] += "<br>" + html.escape(
+                                text, quote=False
+                            )
                         else:
                             pt_b = pt + 1
                             if view.classify(pt) & sublime.CLASS_WORD_START:
                                 pt_b = view.find_by_class(
-                                    pt,
-                                    forward=True,
-                                    classes=(sublime.CLASS_WORD_END))
+                                    pt, forward=True, classes=(sublime.CLASS_WORD_END)
+                                )
                             if pt_b <= pt:
                                 pt_b = pt + 1
-                            selection_set.append(
-                                sublime.Region(pt, pt_b))
-                            line_err_set.append(
-                                [line, html.escape(text, quote=False)])
+                            selection_set.append(sublime.Region(pt, pt_b))
+                            line_err_set.append([line, html.escape(text, quote=False)])
 
                     for _, text in line_err_set:
                         content_set.append(ANNOTATION_TEMPLATE.format(content=text))
@@ -481,4 +474,4 @@ class ExecEventListener(sublime_plugin.EventListener):
     def on_load(self, view):
         w = view.window()
         if w is not None:
-            w.run_command('exec', {'update_annotations_only': True})
+            w.run_command("exec", {"update_annotations_only": True})
