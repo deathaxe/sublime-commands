@@ -192,7 +192,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.proc = None
 
         self.errs_by_file = {}
-        self.annotation_sets_by_buffer = {}
         self.show_errors_inline = True
         self.input_view = None
         self.output_view = None
@@ -486,7 +485,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             view.hide_popup()
 
         self.errs_by_file = {}
-        self.annotation_sets_by_buffer = {}
         self.show_errors_inline = False
 
 
