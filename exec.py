@@ -415,62 +415,58 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.update_annotations()
 
     def update_annotations(self):
-        for window in sublime.windows():
-            for file, errs in self.errs_by_file.items():
-                if view := window.find_open_file(file):
-                    selection_set = []
-                    content_set = []
+        for file, errs in self.errs_by_file.items():
+            if view := self.window.find_open_file(file):
+                selection_set = []
+                content_set = []
 
-                    line_err_set = []
+                line_err_set = []
 
-                    for line, column, text in errs:
-                        pt = view.text_point(line - 1, column - 1)
-                        if line_err_set and line == line_err_set[len(line_err_set) - 1][0]:
-                            line_err_set[len(line_err_set) - 1][1] += "<br>" + html.escape(
-                                text, quote=False
+                for line, column, text in errs:
+                    pt = view.text_point(line - 1, column - 1)
+                    if line_err_set and line == line_err_set[len(line_err_set) - 1][0]:
+                        line_err_set[len(line_err_set) - 1][1] += "<br>" + html.escape(
+                            text, quote=False
+                        )
+                    else:
+                        pt_b = pt + 1
+                        if view.classify(pt) & sublime.CLASS_WORD_START:
+                            pt_b = view.find_by_class(
+                                pt, forward=True, classes=(sublime.CLASS_WORD_END)
                             )
-                        else:
+                        if pt_b <= pt:
                             pt_b = pt + 1
-                            if view.classify(pt) & sublime.CLASS_WORD_START:
-                                pt_b = view.find_by_class(
-                                    pt, forward=True, classes=(sublime.CLASS_WORD_END)
-                                )
-                            if pt_b <= pt:
-                                pt_b = pt + 1
-                            selection_set.append(sublime.Region(pt, pt_b))
-                            line_err_set.append([line, html.escape(text, quote=False)])
+                        selection_set.append(sublime.Region(pt, pt_b))
+                        line_err_set.append([line, html.escape(text, quote=False)])
 
-                    for _, text in line_err_set:
-                        content_set.append(ANNOTATION_TEMPLATE.format(content=text))
+                for _, text in line_err_set:
+                    content_set.append(ANNOTATION_TEMPLATE.format(content=text))
 
-                    # add annotations to all clones in current window
-                    for clone in (view, *view.clones()):
-                        if clone.window() == window:
-                            clone.add_regions(
-                                "exec",
-                                selection_set,
-                                scope="invalid",
-                                annotations=content_set,
-                                flags=(
-                                    sublime.DRAW_SQUIGGLY_UNDERLINE
-                                    | sublime.DRAW_NO_FILL
-                                    | sublime.DRAW_NO_OUTLINE
-                                ),
-                                on_close=self.hide_annotations,
-                            )
+                # add annotations to all clones in current window
+                for clone in (view, *view.clones()):
+                    clone.add_regions(
+                        "exec",
+                        selection_set,
+                        scope="invalid",
+                        annotations=content_set,
+                        flags=(
+                            sublime.DRAW_SQUIGGLY_UNDERLINE
+                            | sublime.DRAW_NO_FILL
+                            | sublime.DRAW_NO_OUTLINE
+                        ),
+                        on_close=self.hide_annotations,
+                    )
 
         self.updating_annotations = False
 
     def hide_annotations(self):
-        for window in sublime.windows():
-            for file in self.errs_by_file:
-                if view := window.find_open_file(file):
-                    for clone in (view, *view.clones()):
-                        if clone.window() == window:
-                            clone.erase_regions("exec")
-                            clone.hide_popup()
+        for file in self.errs_by_file:
+            if view := self.window.find_open_file(file):
+                for clone in (view, *view.clones()):
+                    clone.erase_regions("exec")
+                    clone.hide_popup()
 
-        if view := sublime.active_window().active_view():
+        if view := self.window.active_view():
             view.erase_regions("exec")
             view.hide_popup()
 
