@@ -8,6 +8,8 @@ import signal
 import html
 import queue
 
+from typing import cast
+
 import sublime
 import sublime_plugin
 
@@ -230,6 +232,18 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         if kill_previous and self.proc and self.proc.poll():
             self.proc.kill()
 
+        # Prepare build environment
+
+        merged_env = {}
+        if env:
+            merged_env.update(env)
+        if path:
+            merged_env["PATH"] = path
+        if (view := self.window.active_view()) and (
+            user_env := cast(dict[str, str], view.settings().get("build_env", {}))
+        ):
+            merged_env.update(user_env)
+
         # Default the to the current files directory if no working directory
         # was given
         if (
@@ -286,19 +300,9 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         # Prepare annotations
 
         self.hide_annotations()
-        self.show_errors_inline = \
-            preferences_settings.get("show_errors_inline", True)
+        self.show_errors_inline = preferences_settings.get("show_errors_inline", True)
 
-        merged_env = {}
-
-        if path:
-            merged_env['PATH'] = path
-
-        merged_env.update(env)
-        if self.window.active_view():
-            user_env = self.window.active_view().settings().get('build_env')
-            if user_env:
-                merged_env.update(user_env)
+        # Prepare debug text
 
         self.debug_text = ""
         if shell_cmd:
@@ -311,12 +315,12 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         else:
             self.debug_text += f"[path: {os.environ["PATH"]}]"
 
+        # Run process
+
         self.output_size = 0
 
         try:
-            # Forward kwargs to AsyncProcess
             self.proc = AsyncProcess(cmd, shell_cmd, merged_env, self, path, **kwargs)
-
             self.proc.start()
 
             if interactive:
