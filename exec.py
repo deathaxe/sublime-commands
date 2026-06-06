@@ -374,29 +374,24 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         if proc.killed:
             self.write("\n[Cancelled]")
         elif not self.quiet:
-            elapsed = time.time() - proc.start_time
-            if elapsed < 1:
-                elapsed_str = "%.0fms" % (elapsed * 1000)
+            if (elapsed := time.time() - proc.start_time) < 1:
+                msg = f"Finished in {elapsed * 1000:.0f}ms"
             else:
-                elapsed_str = "%.1fs" % (elapsed)
+                msg = f"Finished in {elapsed:.1f}s"
 
-            exit_code = proc.exit_code()
-            if exit_code == 0 or exit_code is None:
-                self.write("[Finished in %s]" % elapsed_str)
+            if exit_code := proc.exit_code():
+                msg = f"[{msg} with exit code {exit_code}]\n{self.debug_text}"
             else:
-                self.write("[Finished in %s with exit code %d]\n" %
-                           (elapsed_str, exit_code))
-                self.write(self.debug_text)
+                msg = f"[{msg}]"
+
+            self.write(msg)
 
         if proc.killed:
             sublime.status_message("Build cancelled")
+        elif errs := self.output_view.find_all_results():
+            sublime.status_message(f"Build finished with {len(errs)} errors")
         else:
-            errs = self.output_view.find_all_results()
-            if len(errs) == 0:
-                sublime.status_message("Build finished")
-            else:
-                sublime.status_message("Build finished with %d errors" %
-                                       len(errs))
+            sublime.status_message("Build finished")
 
     def write(self, characters):
         self.output_view.run_command(
