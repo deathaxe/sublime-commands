@@ -420,49 +420,56 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             </style>
         '''
 
-        for file, errs in self.errs_by_file.items():
-            view = self.window.find_open_file(file)
-            if view:
-                selection_set = []
-                content_set = []
+        for window in sublime.windows():
+            for file, errs in self.errs_by_file.items():
+                if view := window.find_open_file(file):
+                    selection_set = []
+                    content_set = []
 
-                line_err_set = []
+                    line_err_set = []
 
-                for line, column, text in errs:
-                    pt = view.text_point(line - 1, column - 1)
-                    if (line_err_set and
-                            line == line_err_set[len(line_err_set) - 1][0]):
-                        line_err_set[len(line_err_set) - 1][1] += (
-                            "<br>" + html.escape(text, quote=False))
-                    else:
-                        pt_b = pt + 1
-                        if view.classify(pt) & sublime.CLASS_WORD_START:
-                            pt_b = view.find_by_class(
-                                pt,
-                                forward=True,
-                                classes=(sublime.CLASS_WORD_END))
-                        if pt_b <= pt:
+                    for line, column, text in errs:
+                        pt = view.text_point(line - 1, column - 1)
+                        if (line_err_set and
+                                line == line_err_set[len(line_err_set) - 1][0]):
+                            line_err_set[len(line_err_set) - 1][1] += (
+                                "<br>" + html.escape(text, quote=False))
+                        else:
                             pt_b = pt + 1
-                        selection_set.append(
-                            sublime.Region(pt, pt_b))
-                        line_err_set.append(
-                            [line, html.escape(text, quote=False)])
+                            if view.classify(pt) & sublime.CLASS_WORD_START:
+                                pt_b = view.find_by_class(
+                                    pt,
+                                    forward=True,
+                                    classes=(sublime.CLASS_WORD_END))
+                            if pt_b <= pt:
+                                pt_b = pt + 1
+                            selection_set.append(
+                                sublime.Region(pt, pt_b))
+                            line_err_set.append(
+                                [line, html.escape(text, quote=False)])
 
-                for text in line_err_set:
-                    content_set.append(
-                        '<body>' + stylesheet +
-                        '<div class="error" id=annotation-error>' +
-                        '<span class="content">' + text[1] + '</span></div>' +
-                        '</body>')
+                    for text in line_err_set:
+                        content_set.append(
+                            '<body>' + stylesheet +
+                            '<div class="error" id=annotation-error>' +
+                            '<span class="content">' + text[1] + '</span></div>' +
+                            '</body>')
 
-                view.add_regions(
-                    "exec",
-                    selection_set,
-                    scope="invalid",
-                    annotations=content_set,
-                    flags=(sublime.DRAW_SQUIGGLY_UNDERLINE |
-                           sublime.DRAW_NO_FILL | sublime.DRAW_NO_OUTLINE),
-                    on_close=self.hide_annotations)
+                    # add annotations to all clones in current window
+                    for clone in (view, *view.clones()):
+                        if clone.window() == window:
+                            clone.add_regions(
+                                "exec",
+                                selection_set,
+                                scope="invalid",
+                                annotations=content_set,
+                                flags=(
+                                    sublime.DRAW_SQUIGGLY_UNDERLINE
+                                    | sublime.DRAW_NO_FILL
+                                    | sublime.DRAW_NO_OUTLINE
+                                ),
+                                on_close=self.hide_annotations,
+                            )
 
     def hide_annotations(self):
         for window in sublime.windows():
