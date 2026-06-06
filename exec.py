@@ -343,7 +343,8 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         if not self.proc.poll():
             return
 
-        text += '\n'
+        if text[-1] != '\n':
+            text += '\n'
 
         self.write(text)
         self.input_queue.put(text.encode(self.encoding))
