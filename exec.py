@@ -1,7 +1,6 @@
 import codecs
 import html
 import os
-import queue
 import signal
 import subprocess
 import sys
@@ -131,21 +130,9 @@ class AsyncProcess:
     def start(self):
         self.stdout_thread.start()
 
-    def start_input_thread(self):
-        input_queue = queue.SimpleQueue()
-
-        def write():
-            while self.poll():
-                text = input_queue.get()
-                if text is None:
-                    break
-
-                self.proc.stdin.write(text)
-                self.proc.stdin.flush()
-
-        threading.Thread(target=write).start()
-
-        return input_queue
+    def send(self, data):
+        self.proc.stdin.write(data)
+        self.proc.stdin.flush()
 
     def kill(self):
         if not self.killed:
@@ -190,7 +177,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.quiet = False
         self.errs_by_file = {}
         self.show_errors_inline = True
-        self.input_queue = None
         self.input_view = sublime.View(0)
         self.output_size = 0
         self.output_view = sublime.View(0)
@@ -318,12 +304,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         try:
             self.proc = AsyncProcess(cmd, shell_cmd, merged_env, self, **kwargs)
             self.proc.start()
-
-            if interactive:
-                self.input_queue = self.proc.start_input_thread()
-            else:
-                self.input_queue = None
-
         except Exception as e:
             msg = f"{e!s}\n{self.debug_text}\n"
             if not self.quiet:
@@ -337,14 +317,14 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         return kill is False or self.proc is not None
 
     def on_input(self, text):
-        if not self.input_queue or not self.proc:
+        if not self.proc:
             return
 
         if text[-1] != "\n":
             text += "\n"
 
         self.write(text)
-        self.input_queue.put(text.encode(self.encoding))
+        self.proc.send(text.encode(self.encoding))
 
     def on_data(self, proc, data):
         if proc != self.proc:
@@ -363,11 +343,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
     def on_finished(self, proc):
         if proc != self.proc:
             return
-
-        if self.input_queue is not None:
-            # This signals shutdown
-            self.input_queue.put(None)
-            self.input_queue = None
 
         if proc.killed:
             self.write_on_new_line("[Cancelled]")
