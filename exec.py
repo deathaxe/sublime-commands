@@ -106,6 +106,14 @@ class AsyncProcess:
                     cmd = ["/usr/bin/env", "bash", "-c", shell_cmd]
                     shell = False
 
+            # Hide console window on Windows (only required if shell is False)
+            if shell is False and sys.platform == "win32":
+                startupinfo = subprocess.STARTUPINFO()
+                startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+                startupinfo.wShowWindow = subprocess.SW_HIDE
+            else:
+                startupinfo = None
+
             self.proc = subprocess.Popen(
                 cmd,
                 bufsize=0,
@@ -113,6 +121,7 @@ class AsyncProcess:
                 stderr=subprocess.STDOUT,
                 stdin=subprocess.PIPE,
                 env=proc_env,
+                startupinfo=startupinfo,
                 preexec_fn=preexec_fn,
                 shell=shell,
             )
