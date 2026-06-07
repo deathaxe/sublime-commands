@@ -322,14 +322,11 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         return kill is False or self.proc is not None
 
     def on_input(self, text):
-        if not self.proc:
-            return
-
-        if text[-1] != "\n":
-            text += "\n"
-
-        self.write(text)
-        self.proc.send(text.encode(self.encoding))
+        if proc := self.proc:
+            if text[-1] != "\n":
+                text += "\n"
+            self.write(text)
+            proc.send(text.encode(self.encoding))
 
     def on_data(self, proc, data):
         if proc != self.proc:
