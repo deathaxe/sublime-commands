@@ -362,6 +362,9 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
             self.write_on_new_line(msg)
 
+        elif self.input_view:
+            self.window.run_command("hide_panel", {"cancel": True})
+
         if proc.killed:
             sublime.status_message("Build cancelled")
         elif errs := self.output_view.find_all_results():
