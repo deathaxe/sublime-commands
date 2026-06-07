@@ -194,6 +194,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         kill=False,
         kill_previous=False,
         update_annotations_only=False,
+        hide_annotations_only=False,
         word_wrap=True,
         interactive=False,
         syntax="Packages/Text/Plain text.tmLanguage",
@@ -201,6 +202,10 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         # Catches "shell"
         **kwargs,
     ):
+        if hide_annotations_only:
+            self.hide_annotations()
+            return
+
         if update_annotations_only:
             if self.show_errors_inline:
                 self.update_annotations()
@@ -457,3 +462,12 @@ class ExecEventListener(sublime_plugin.EventListener):
         w = view.window()
         if w is not None:
             w.run_command("exec", {"update_annotations_only": True})
+
+    def on_query_context(self, view, key, operator, operand, match_all):
+        if key == "exec_annotations_visible":
+            value = bool(view.get_regions("exec"))
+            if operator == sublime.OP_EQUAL:
+                return value == operand
+            if operator == sublime.OP_NOT_EQUAL:
+                return value != operand
+        return False
