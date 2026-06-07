@@ -345,6 +345,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
     def on_finished(self, proc):
         if proc != self.proc:
             return
+        self.proc = None
 
         if proc.killed:
             self.write_on_new_line("[Cancelled]")
@@ -368,7 +369,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         else:
             sublime.status_message("Build finished")
 
-        self.proc = None
 
     def write_on_new_line(self, characters):
         size = self.output_view.size()
