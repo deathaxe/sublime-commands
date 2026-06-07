@@ -372,7 +372,6 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         else:
             sublime.status_message("Build finished")
 
-
     def write_on_new_line(self, characters):
         size = self.output_view.size()
         if size > 0 and self.output_view.substr(size - 1) != '\n':
