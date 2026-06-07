@@ -177,6 +177,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         self.quiet = False
         self.errs_by_file = {}
         self.show_errors_inline = True
+        self.updating_annotations = False
         self.input_view = sublime.View(0)
         self.output_size = 0
         self.output_view = sublime.View(0)
