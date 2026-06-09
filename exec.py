@@ -438,7 +438,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
                     clone.add_regions(
                         "exec",
                         selection_set,
-                        scope="invalid",
+                        scope="markup.error",
                         annotations=content_set,
                         flags=(
                             sublime.DRAW_SQUIGGLY_UNDERLINE
