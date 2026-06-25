@@ -15,22 +15,8 @@ import sublime_plugin
 __all__ = ["ExecCommand", "ExecEventListener"]
 
 ANNOTATION_TEMPLATE = """
-<body>
-  <style>
-    #annotation-error {{
-      background-color: color(var(--background) blend(#fff 95%));
-    }}
-    html.dark #annotation-error {{
-      background-color: color(var(--background) blend(#fff 95%));
-    }}
-    html.light #annotation-error {{
-      background-color: color(var(--background) blend(#000 85%));
-    }}
-    a {{
-      text-decoration: inherit;
-    }}
-  </style>
-  <div class="error" id=annotation-error>
+<body id="annotation-error">
+  <div class="error">
     <span class="content">{content}</span>
   </div>
 </body>
