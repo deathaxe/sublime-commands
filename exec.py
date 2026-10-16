@@ -6,7 +6,7 @@ import subprocess
 import sys
 import threading
 import time
-
+from functools import partial
 from typing import cast
 
 import sublime
@@ -453,10 +453,32 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
 
 class ExecEventListener(sublime_plugin.EventListener):
+    view_changing = False
+    """View change detection is running, checking changing views each 250ms"""
+    last_view = None
+    """Most recently loaded view"""
+
+    def update_annotations(self, view):
+        """
+        Update build annotations if no more views are being loaded.
+
+        Skip annotation updates as long as new ((semi-)transient) views are loaded,
+        which indicates e.g. quickly navigating through Goto Anything quick panel.
+        """
+        if view != self.last_view:
+            sublime.set_timeout(partial(self.update_annotations, self.last_view), 250)
+            return
+
+        if window := view.window():
+            window.run_command("exec", {"update_annotations_only": True})
+
+        self.view_changing = False
+
     def on_load(self, view):
-        w = view.window()
-        if w is not None:
-            w.run_command("exec", {"update_annotations_only": True})
+        self.last_view = view
+        if not self.view_changing:
+            self.view_changing = True
+            sublime.set_timeout(partial(self.update_annotations, self.last_view), 250)
 
     def on_query_context(self, view, key, operator, operand, match_all):
         if key == "exec_annotations_visible":
