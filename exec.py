@@ -185,7 +185,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
         line_regex="",
         working_dir="",
         encoding="utf-8",
-        env={},
+        env=None,
         quiet=False,
         kill=False,
         kill_previous=False,
@@ -294,9 +294,9 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
             self.debug_text += f"[cmd: {cmd!s}]\n"
         self.debug_text += f"[dir: {os.getcwd()}]\n"
         if "PATH" in merged_env:
-            self.debug_text += f"[path: {os.path.expandvars(merged_env["PATH"])}]"
+            self.debug_text += f"[path: {os.path.expandvars(merged_env['PATH'])}]"
         else:
-            self.debug_text += f"[path: {os.environ["PATH"]}]"
+            self.debug_text += f"[path: {os.environ['PATH']}]"
 
         # Run process
 
@@ -370,7 +370,7 @@ class ExecCommand(sublime_plugin.WindowCommand, ProcessListener):
 
     def write_on_new_line(self, characters):
         size = self.output_view.size()
-        if size > 0 and self.output_view.substr(size - 1) != '\n':
+        if size > 0 and self.output_view.substr(size - 1) != "\n":
             characters = "\n" + characters
         self.write(characters)
 
